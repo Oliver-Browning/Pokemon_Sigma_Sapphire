@@ -2,15 +2,12 @@ import keyboard
 import os
 
 
-
-
 #Change read file path as needed for your file system
 #global read_path
 read_path = "Pokemon_Sigma_Sapphire\\PokeList_v3.csv"
 run = True
 men = True
 key = ''
-
 
 
 def fetch_pokemon_list(show_first = False):
@@ -31,14 +28,22 @@ def fetch_pokemon_list(show_first = False):
 
     return line_list
 
+
 def login():
-    pass
+    username = input("Username: ")
+    print()
+    password = input("Password: ")
+
 
 def create_account():
     pass
 
-def draw():
-    print("------------------------------")
+
+def draw(char="-"):
+    print(f"{char*30}")#------------------------------")
+
+
+
 
 def menu():
     #global key
@@ -66,10 +71,9 @@ def menu():
 
 
 
-
-
 def pause():
     pass
+
 
 def game(key=''):
     if key == 'q':
@@ -81,33 +85,41 @@ def game(key=''):
     else:
         pass
 
+
 first = True
+
 
 def get_key():
     global key 
     key = keyboard.read_key()
 
 
+def title_screen():
+    draw()
+    draw("*")
+    print()
+    print("Welcome to Pokemon Sigma Sapphire!")
+    print("-----Press Space to Continue-----")
+    print()
+    draw("*")
+    draw()
+    get_key()
+    if key == 'space':
+        return
+
+
 def main():
     while True:
         #print(f"In main loop{__name__}")
         global first
-        if first:
+        if first:   #If this is the first time running the game, display the title screen
+            title_screen()
             game()
             first = False
-        else:
+        else:   #If not the first time running the game dont display the title screen
             #key_input = keyboard.read_key()
             get_key()
             game()
-
-        
-        
-
-        #poke_list = fetch_pokemon_list(True)
-        #print(poke_list[0:2])
-
-
-
 
 
 if __name__ == "__main__":
