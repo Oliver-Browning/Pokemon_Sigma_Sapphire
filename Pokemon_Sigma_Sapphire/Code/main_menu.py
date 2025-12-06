@@ -1,0 +1,136 @@
+import tkinter as tk
+
+# generate the main window
+menuWindow = tk.Tk()
+menuWindow.geometry("800x600")
+menuWindow.resizable(False, False)
+menuWindow.title("Pokemon Sigma Sapphire")
+
+# main background image
+background = tk.PhotoImage(file="../images/mainMenu_Background.png")
+
+# actaully putting it on the canvas so it renders
+backCanvas = tk.Canvas(menuWindow, width=800, height=600)
+backCanvas.pack(fill="both", expand=True)
+backCanvas.create_image(0, 0, image=background, anchor="nw")
+
+# stuff relating to manipulating save data
+saveChangeBackground = tk.PhotoImage(file="../images/mainMenu_SAVECHANGE_Background.png")
+saveChangeBackgroundImage = backCanvas.create_image(447, 57, image=saveChangeBackground, anchor="nw")
+backCanvas.itemconfig(saveChangeBackgroundImage, state='hidden')
+
+
+
+
+def show_save_change_things():
+    backCanvas.itemconfig(saveChangeBackgroundImage, state='normal')
+    continueButton.configure(state='disabled')
+    savesButton.configure(state='disabled')
+
+    # save change menu items
+    p1Select.place(x=535, y=200, anchor="center", height=40)
+    p2Select.place(x=535, y=300, anchor="center", height=40)
+    p3Select.place(x=535, y=400, anchor="center", height=40)
+    p4Select.place(x=535, y=500, anchor="center", height=40)
+    p1Reset.place(x=660, y=200, anchor="center", height=40)
+    p2Reset.place(x=660, y=300, anchor="center", height=40)
+    p3Reset.place(x=660, y=400, anchor="center", height=40)
+    p4Reset.place(x=660, y=500, anchor="center", height=40)
+
+def hide_save_change_things(playerName):
+    backCanvas.itemconfig(saveChangeBackgroundImage, state='hidden')
+    continueButton.configure(state='normal')
+    savesButton.configure(state='normal')
+    playerSelectedLabel.configure(text=("  " + playerName + "  ")) # don't forget to show who's playing!
+
+    # save change menu items
+    p1Select.place_forget()
+    p2Select.place_forget()
+    p3Select.place_forget()
+    p4Select.place_forget()
+    p1Reset.place_forget()
+    p2Reset.place_forget()
+    p3Reset.place_forget()
+    p4Reset.place_forget()
+
+
+# the following two functions handle changing the button color when hovered over!
+def button_on_enter(caller):
+    caller.widget['background'] = 'sky blue'
+
+def button_on_leave(caller):
+    caller.widget['background'] = 'SystemButtonFace'
+
+# the following handles making the reset butons red when hovered over!
+def reset_on_enter(caller):
+    caller.widget['background'] = 'OrangeRed'
+
+
+# buttons for manipulating
+p1Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Player 1"))
+p2Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Player 2"))
+p3Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Player 3"))
+p4Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Player 4"))
+p1Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
+p2Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
+p3Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
+p4Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
+
+
+# generating the MAIN menu items
+
+playerSelectedLabel = tk.Label(menuWindow, text=("  " + "Player 1" + "  "), font="Ariel 13 bold", fg="white", bg="dark blue")
+playerSelectedLabel.place(x=165, y=432, anchor="center")
+
+continueButton = tk.Button(menuWindow, text="Continue", font="Helvetica 21")
+continueButton.place(x=165, y=470, anchor="center", height=40)
+
+savesButton = tk.Button(menuWindow, text="Saves", font="Helvetica 21", command=show_save_change_things)
+savesButton.place(x=165, y=515, anchor="center", height=40)
+
+quitButton = tk.Button(menuWindow, text="Quit", font="Helvetica 21", command=menuWindow.destroy)
+quitButton.place(x=165, y=560, anchor="center", height=40)
+
+
+# setting color binding!
+
+continueButton.bind("<Enter>", button_on_enter)
+continueButton.bind("<Leave>", button_on_leave)
+
+savesButton.bind("<Enter>", button_on_enter)
+savesButton.bind("<Leave>", button_on_leave)
+
+quitButton.bind("<Enter>", reset_on_enter)
+quitButton.bind("<Leave>", button_on_leave)
+
+p1Select.bind("<Enter>", button_on_enter)
+p1Select.bind("<Leave>", button_on_leave)
+
+p2Select.bind("<Enter>", button_on_enter)
+p2Select.bind("<Leave>", button_on_leave)
+
+p3Select.bind("<Enter>", button_on_enter)
+p3Select.bind("<Leave>", button_on_leave)
+
+p4Select.bind("<Enter>", button_on_enter)
+p4Select.bind("<Leave>", button_on_leave)
+
+p1Reset.bind("<Enter>", reset_on_enter)
+p1Reset.bind("<Leave>", button_on_leave)
+
+p2Reset.bind("<Enter>", reset_on_enter)
+p2Reset.bind("<Leave>", button_on_leave)
+
+p3Reset.bind("<Enter>", reset_on_enter)
+p3Reset.bind("<Leave>", button_on_leave)
+
+p4Reset.bind("<Enter>", reset_on_enter)
+p4Reset.bind("<Leave>", button_on_leave)
+
+
+
+
+
+
+
+menuWindow.mainloop()
