@@ -1,18 +1,33 @@
+'''
 import keyboard
 import os
 import time
 import msvcrt
+'''
+import game
+
+
+
+
+
+
+
 
 
 #Change read file path as needed for your file system
 #global read_path
 read_path = "Pokemon_Sigma_Sapphire\\PokeList_v3.csv"
+
+'''
 run = True
 men = True
 key = ''
+'''
 
 
-def fetch_pokemon_list(show_first = False):
+
+'''    moved into its own file
+def fetch_list(file_path, show_first = False):
     """
     Reads PokeListv3.csv into a variable.
     show_first is a boolean that controls whether or not 
@@ -30,7 +45,11 @@ def fetch_pokemon_list(show_first = False):
 
     return line_list
 
+'''
 
+
+
+'''
 def login():
     username = input("Username: ")
     print()
@@ -77,10 +96,10 @@ def clear():
     else:
         os.system('clear')
 
+'''
 
 
-
-
+'''
 def menu():
     #global key
     #os.system('cls') #This is the command for windows os.system('clear') for mac
@@ -126,6 +145,8 @@ def draw_frame(top_bar, game_space, bottom_bar):
     
     for line in range(bottom_bar):
         print(line)
+
+'''
 
 
 #Total screen space as of now (we can change it)  (x,y) = (100, 40)
@@ -188,7 +209,7 @@ Hmmm maybe we should use curses
 
 '''
 
-
+'''
 def game(key=''):
     clear()
     print("Inside of the game")
@@ -202,7 +223,7 @@ def game(key=''):
         pause()
     else:
         pass
-
+'''
 
 first = True
 
@@ -217,6 +238,7 @@ def get_key():
             return
 '''
 
+'''
 
 def title_screen():
     draw_line()
@@ -231,24 +253,23 @@ def title_screen():
     #get_key()
     #if key == 'space':
     #    return
+'''
 
+
+
+
+
+#player_file_locations = ["player1.json", "player2.json", "player3.json", "player4.json"]
 
 def main():
-    #os.system('cls') #Maybe change into its own function where we can check if the system is a mac, and if so change the clear command to the mac one
-    clear()
-    while True:
-        #print(f"In main loop{__name__}")
-        global first
-        if first:   #If this is the first time running the game, display the title screen
-            title_screen()
-            console_resize(100, 40, "#")
-            menu()
-            game()
-            first = False
-        else:   #If not the first time running the game dont display the title screen
-            #key_input = keyboard.read_key()
-            #get_key()
-            game()
+
+    pass
+    #main_menu.run_menu()
+
+
+    
+
+
 
 
 if __name__ == "__main__":
