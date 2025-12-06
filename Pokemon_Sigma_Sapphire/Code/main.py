@@ -12,7 +12,9 @@ men = True
 key = ''
 
 
-def fetch_pokemon_list(show_first = False):
+
+'''    moved into its own file
+def fetch_list(file_path, show_first = False):
     """
     Reads PokeListv3.csv into a variable.
     show_first is a boolean that controls whether or not 
@@ -29,6 +31,10 @@ def fetch_pokemon_list(show_first = False):
             line_list = line_list[1:]
 
     return line_list
+
+'''
+
+
 
 
 def login():
