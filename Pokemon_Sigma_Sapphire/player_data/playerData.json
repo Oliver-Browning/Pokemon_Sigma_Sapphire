@@ -2,7 +2,16 @@
   "Noam": {
     "level": 69,
     "candies": 154,
-    "pokemon": {}
+    "pokemon": {
+      "Bulbasoar": {
+        "level": 32,
+        "type": "leaf"
+      },
+      "Charmander": {
+        "level": 12,
+        "type": "fire"
+      }
+    }
   },
   "Oliver": {
     "level": 67,

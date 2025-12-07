@@ -1,5 +1,6 @@
 import tkinter as tk
 import file_IO
+import os
 
 def run_menu():
     '''
@@ -7,6 +8,7 @@ def run_menu():
     It returns the selected player's name, or if "Quit" is pressed, boolean False.
     '''
 
+    os.system('start ../Audio/"Pokemon Theme (8 Bit Raxlen Slice Chiptune Remix) [DeTJQf57wwQ].mp3"')
 
     # get the last played player - that will be the default
     player = file_IO.fetch_json("../player_data/last_save_used.json")["lastPlayed"]
