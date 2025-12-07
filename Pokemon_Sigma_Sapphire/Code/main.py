@@ -9,13 +9,6 @@ import main_menu
 import file_IO
 
 
-
-
-
-
-
-
-
 #Change read file path as needed for your file system
 #global read_path
 read_path = "Pokemon_Sigma_Sapphire\\PokeList_v3.csv"
@@ -77,7 +70,7 @@ player_file_location_dict = {"noam": "../player_data/noam.json",
 def main():
 
     current_player_name = main_menu.run_menu()
-
+    print("Before if statements", current_player_name)
     if current_player_name == False:
         quit()
     elif current_player_name in player_file_location_dict.keys():
@@ -85,10 +78,11 @@ def main():
         current_player_file = player_file_location_dict[current_player_name]
     else:
         print("main_menu.run_menu() has returned something invalid")
-    
+    print("After if statements", current_player_name)
+    print("Current player file", current_player_file)
     current_player_data = file_IO.fetch_json(current_player_file)
 
-    print(current_player_data)
+    print("DATA after file statements", current_player_data)
 
     
     #Load player json
