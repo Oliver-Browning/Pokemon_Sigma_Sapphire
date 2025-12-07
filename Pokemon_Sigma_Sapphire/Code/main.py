@@ -5,7 +5,8 @@ import time
 import msvcrt
 '''
 import game
-
+import main_menu
+import file_IO
 
 
 
@@ -65,12 +66,35 @@ game board:
 
 
 
-player_file_locations = ["../player_data/noam.json", "../player_data/oliver.json", "../player_data/logan.json", "../player_data/shreyaan.json"]
+#player_file_locations = ["../player_data/noam.json", "../player_data/oliver.json", "../player_data/logan.json", "../player_data/shreyaan.json"]
+player_file_location_dict = {"noam": "../player_data/noam.json", 
+                             "oliver": "../player_data/oliver.json",
+                             "logan": "../player_data/logan.json",
+                             "shreyaan": "../player_data/shreyaan.json"
+                             }
+
 
 def main():
-    pass
 
-    #main_menu.run_menu()
+    current_player_name = main_menu.run_menu()
+
+    if current_player_name == False:
+        quit()
+    elif current_player_name in player_file_location_dict.keys():
+        current_player_name = current_player_name.lower()
+        current_player_file = player_file_location_dict[current_player_name]
+    else:
+        print("main_menu.run_menu() has returned something invalid")
+    
+    current_player_data = file_IO.fetch_json(current_player_file)
+
+    print(current_player_data)
+
+    
+    #Load player json
+    
+
+
 
 
 
