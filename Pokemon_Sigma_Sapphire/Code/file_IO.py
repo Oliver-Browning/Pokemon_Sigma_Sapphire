@@ -54,12 +54,3 @@ def push_json(file_path, dictionary, mode):
             json.dump(dictionary, file, mode)
         except:
             return False
-
-
-
-
-
-
-
-
-

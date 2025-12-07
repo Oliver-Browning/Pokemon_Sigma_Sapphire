@@ -29,13 +29,12 @@ def run_game(player_data):
     backCanvas.create_image(0, 0, image=background, anchor="nw")
 
 
+
+
     #def run_minigame():
     #    minigame.start_minigame()
-
-
     #savesButton = tk.Button(gameWindow, text="Test", font="Helvetica 21", command=run_minigame)
     #savesButton.place(x=165, y=515, anchor="center", height=40)
-
     #Make a test button that triggers the minigame thing
     #TEMP STUFF BECAUSE OLIVER WAS BORED
 
@@ -43,6 +42,10 @@ def run_game(player_data):
 
     # getting the current player data
     #playerData = file_IO.fetch_json("../player_data/playerData.json")[player_name]
+
+
+
+
     currentLevel = player_data["level"]
     currentCandies = player_data["candies"]
     print(currentLevel)
