@@ -41,7 +41,7 @@ def fetch_json(file_path):
     Words
     """
     with open(file_path, "r") as file:
-        dictionary = json.loads(file)
+        dictionary = json.load(file)
         return dictionary
 
 

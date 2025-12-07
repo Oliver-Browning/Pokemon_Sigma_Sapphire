@@ -3,8 +3,9 @@ import file_IO
 
 def run_menu():
 
-    # value that will be returned
-    player = "Noam" # I'm the default cause that's how cool I am!
+    # get the last played player - that will be the default
+    player = file_IO.fetch_json("../player_data/last_save_used.json")["lastPlayed"]
+
 
 
     # generate the main window
@@ -98,7 +99,7 @@ def run_menu():
 
     # generating the MAIN menu items
 
-    playerSelectedLabel = tk.Label(menuWindow, text=("  " + "Select a player!" + "  "), font="Ariel 13 bold", fg="white", bg="dark blue")
+    playerSelectedLabel = tk.Label(menuWindow, text=("  Player: " + player + "  "), font="Ariel 13 bold", fg="white", bg="dark blue")
     playerSelectedLabel.place(x=165, y=432, anchor="center")
 
     continueButton = tk.Button(menuWindow, text="Continue", font="Helvetica 21", command=player_selected)
@@ -152,5 +153,3 @@ def run_menu():
     menuWindow.mainloop()
 
     return player
-
-print(run_menu())
