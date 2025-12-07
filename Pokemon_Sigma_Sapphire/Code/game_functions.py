@@ -24,7 +24,8 @@ def catch_pokemon(current_player_data, csvString):
     l = csvString.split(',')
 
     #current_player_data = #file_IO.fetch_json("../player_data/playerData.json")[main_menu.run_menu()]
-    
-    current_player_data["pokemon"] += [[l[0],l[1],random.randint( int(l[2]),int(l[3]) )]]
+    pokemon = [l[0],l[1],random.randint( int(l[2]),int(l[3]) )]
+    current_player_data["pokemon"] += [pokemon]
 
     print(current_player_data)
+    return pokemon
