@@ -48,6 +48,11 @@ def run_menu():
         p3Reset.place(x=660, y=400, anchor="center", height=40)
         p4Reset.place(x=660, y=500, anchor="center", height=40)
 
+        p1Label.place(x=600, y=150, anchor="center")
+        p2Label.place(x=600, y=250, anchor="center")
+        p3Label.place(x=600, y=350, anchor="center")
+        p4Label.place(x=600, y=450, anchor="center")
+
     def hide_save_change_things(playerName):
         nonlocal player
         player = playerName
@@ -66,6 +71,11 @@ def run_menu():
         p2Reset.place_forget()
         p3Reset.place_forget()
         p4Reset.place_forget()
+
+        p1Label.place_forget()
+        p2Label.place_forget()
+        p3Label.place_forget()
+        p4Label.place_forget()
 
 
     # the following two functions handle changing the button color when hovered over!
@@ -86,6 +96,32 @@ def run_menu():
         menuWindow.destroy()
 
 
+    # labels with player data
+    players = file_IO.fetch_json("../player_data/playerData.json")
+    playerNames = []
+    for name in players:
+        playerNames.append(name)
+    p1Label = tk.Label(menuWindow, text=(
+                                         playerNames[0] + ": Level " + str(players[playerNames[0]]["level"])
+                                         + ", Candies: " + str(players[playerNames[0]]["candies"])
+                                         ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
+
+    p2Label = tk.Label(menuWindow, text=(
+                                         playerNames[1] + ": Level " + str(players[playerNames[1]]["level"])
+                                         + ", Candies: " + str(players[playerNames[1]]["candies"])
+                                         ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
+
+    p3Label = tk.Label(menuWindow, text=(
+                                         playerNames[2] + ": Level " + str(players[playerNames[2]]["level"])
+                                         + ", Candies: " + str(players[playerNames[2]]["candies"])
+                                         ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
+
+    p4Label = tk.Label(menuWindow, text=(
+                                         playerNames[3] + ": Level " + str(players[playerNames[3]]["level"])
+                                         + ", Candies: " + str(players[playerNames[3]]["candies"])
+                                         ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
+
+
     # buttons for manipulating
     p1Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Noam"))
     p2Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Oliver"))
@@ -104,7 +140,6 @@ def run_menu():
 
     continueButton = tk.Button(menuWindow, text="Continue", font="Helvetica 21", command=player_selected)
     continueButton.place(x=165, y=470, anchor="center", height=40)
-    continueButton.configure(state='disabled')
 
     savesButton = tk.Button(menuWindow, text="Saves", font="Helvetica 21", command=show_save_change_things)
     savesButton.place(x=165, y=515, anchor="center", height=40)
