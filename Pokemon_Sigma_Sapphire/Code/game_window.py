@@ -2,6 +2,8 @@ import tkinter as tk
 import file_IO
 import game_functions
 
+import minigame
+
 def run_game(player_data):
 
     player_name = player_data["name"]
@@ -15,6 +17,9 @@ def run_game(player_data):
 
 
 
+
+
+
     #TEMP STUFF BECAUSE OLIVER WAS BORED
     #Placeholder because the empty white window scares me
     background = tk.PhotoImage(file="../images/placeholder_background.png")
@@ -22,6 +27,14 @@ def run_game(player_data):
     backCanvas = tk.Canvas(gameWindow, width=800, height=600)
     backCanvas.pack(fill="both", expand=True)
     backCanvas.create_image(0, 0, image=background, anchor="nw")
+
+
+    #def run_minigame():
+    #    minigame.start_minigame()
+
+
+    #savesButton = tk.Button(gameWindow, text="Test", font="Helvetica 21", command=run_minigame)
+    #savesButton.place(x=165, y=515, anchor="center", height=40)
 
     #Make a test button that triggers the minigame thing
     #TEMP STUFF BECAUSE OLIVER WAS BORED
@@ -35,7 +48,7 @@ def run_game(player_data):
     print(currentLevel)
     print(currentCandies)
 
-
+    print("Test to see if this loops over and over")
     gameWindow.mainloop()
 
 if __name__ == "__main__":
