@@ -14,6 +14,20 @@ def run_game(player_data):
     gameWindow.geometry("800x600")
 
 
+
+    #TEMP STUFF BECAUSE OLIVER WAS BORED
+    #Placeholder because the empty white window scares me
+    background = tk.PhotoImage(file="../images/placeholder_background.png")
+
+    backCanvas = tk.Canvas(gameWindow, width=800, height=600)
+    backCanvas.pack(fill="both", expand=True)
+    backCanvas.create_image(0, 0, image=background, anchor="nw")
+
+    #Make a test button that triggers the minigame thing
+    #TEMP STUFF BECAUSE OLIVER WAS BORED
+
+
+
     # getting the current player data
     #playerData = file_IO.fetch_json("../player_data/playerData.json")[player_name]
     currentLevel = player_data["level"]
