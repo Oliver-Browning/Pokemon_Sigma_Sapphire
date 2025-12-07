@@ -2,6 +2,11 @@ import tkinter as tk
 import file_IO
 
 def run_menu():
+    '''
+    This function invokes the main menu screen, and all associated functionality.
+    It returns the selected player's name, or if "Quit" is pressed, boolean False.
+    '''
+
 
     # get the last played player - that will be the default
     player = file_IO.fetch_json("../player_data/last_save_used.json")["lastPlayed"]
@@ -188,3 +193,6 @@ def run_menu():
     menuWindow.mainloop()
 
     return player
+
+if __name__ == "__main__":
+    run_menu()

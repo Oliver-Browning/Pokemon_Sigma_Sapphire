@@ -1,7 +1,8 @@
 {
   "Noam": {
     "level": 69,
-    "candies": 154
+    "candies": 154,
+    "pokemon": {}
   },
   "Oliver": {
     "level": 67,
