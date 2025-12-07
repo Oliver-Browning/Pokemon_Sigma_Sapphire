@@ -8,81 +8,34 @@ import game
 import main_menu
 import file_IO
 
-
-#Change read file path as needed for your file system
-#global read_path
-read_path = "Pokemon_Sigma_Sapphire\\PokeList_v3.csv"
-
-'''
-game board:
-1====================================================================================================         100 ='s
-2  Player_name                                  stuff                                     p - pause 
-3====================================================================================================
-4                                                                                                    
-5                                                                                                   
-6                                                                                                   
-7                                                                                                   
-8                                                                                                   
-9                                                                                                   
-0                                                                                                   
-1                                                                                                   
-2                                                                                                   
-3                                                                                                   
-4                                                                                                   
-5                                                                                                                                          Actual game stuff
-6                                                                                                   
-7                                                                                                   
-8                                                                                                   
-9                                                                                                   
-0                                                                                                   
-1                                                                                                   
-2                                                                                                   
-3                                                                                                   
-4                                                                                                   
-5                                                                                                   
-6                                                                                                   
-7                                                                                                   
-8                                                                                                   
-9                                                                                                   
-0====================================================================================================
-1                                            Example
-2   
-3
-4   Option 1.                    Option 5.        
-5   Option 2.                    Option 6.
-6   Option 3.                    Option 7.
-7   Option 4.                    Option 8.
-8 
-9
-0====================================================================================================
-'''
-
-
-
-
+read_path = "../PokeList_v3.csv"
 player_data_file = "../player_data/playerData.json"
 
 def main():
+    """
+    This function takes in no arguments. It calls all of the
+    other functions to make the program work as well as assign
+    some of the necessary primary variables like player data
+    and the pokemon csv.
+    """
+
 
     all_player_data = file_IO.fetch_json(player_data_file)
     current_player_name = main_menu.run_menu()
 
-    #print("All player data: ", all_player_data)
 
+    #Check if main_menu.run_menu() returns false since that indicates quit game was selected
     if current_player_name == False:
         quit()
+    #Check to see if the name returned actually exists just in case an error occurs between the UI and this file
     elif current_player_name in all_player_data:
         current_player_data = all_player_data[current_player_name]
-    else:
-        print("main_menu.run_menu() has returned something invalid")
-    
+    else:   #For debugging
+        print("main_menu.run_menu() has returned something invalid") 
+    #print("Current player data: ", current_player_data) #For debugging
 
-    print("Current player data: ", current_player_data)
-
-    
-
-
-
+    #Do other stuff before starting game
+    #game()
 
 
 if __name__ == "__main__":
