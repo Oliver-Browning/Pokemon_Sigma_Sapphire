@@ -1,5 +1,6 @@
 {
   "Noam": {
+    "name": "Noam",
     "level": 69,
     "candies": 154,
     "pokemon": {
@@ -14,14 +15,17 @@
     }
   },
   "Oliver": {
+    "name": "Oliver",
     "level": 67,
     "candies": 237
   },
   "Logan": {
+    "name": "Oliver",
     "level": 420,
     "candies": 65
   },
   "Shreyaan": {
+    "name": "Shreyaan",
     "level": 1,
     "candies": 0
   }
