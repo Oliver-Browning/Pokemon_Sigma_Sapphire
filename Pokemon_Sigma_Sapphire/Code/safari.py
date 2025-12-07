@@ -1,9 +1,20 @@
 import tkinter as tk
 import skyblockPuzzle
-
+import file_IO
+import random
+import game_functions
 
 
 def run_safari():
+
+
+
+
+
+
+
+
+
 
 
     safari_window = tk.Tk()
@@ -11,6 +22,12 @@ def run_safari():
     safari_window.geometry("800x600")
     safari_window.resizable(False, False)
     safari_window.title("Safari")
+
+
+    poke_list_1 = file_IO.fetch_list("../PokeList_v3.csv", False)
+
+    selected_pokemon = poke_list_1[random.randint(1,150)]
+
 
 
     weirdo_tuple = skyblockPuzzle.three_weirdos()
@@ -50,16 +67,22 @@ def run_safari():
     def option_1_selected():
         game_won = weirdo_tuple[0][2]
         print(game_won)
+        if game_won == True:
+            game_functions.catch_pokemon(selected_pokemon)
 
     def option_2_selected():
         game_won = weirdo_tuple[1][2]
         print(game_won)
+        if game_won == True:
+            game_functions.catch_pokemon(selected_pokemon)
 
     def option_3_selected():
         game_won = weirdo_tuple[2][2]
         print(game_won)
+        if game_won == True:
+            game_functions.catch_pokemon(selected_pokemon)
+        
 
-            
 
 
     option_1 = tk.Button(safari_window, text = weirdo_1_name, command = option_1_selected)
@@ -76,6 +99,14 @@ def run_safari():
     lab.pack()
 
     #   139,Kabuto,170,270
+
+
+    
+
+
+
+
+
 
     safari_window.mainloop()
 
