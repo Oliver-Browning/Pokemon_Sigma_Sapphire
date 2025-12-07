@@ -1,14 +1,8 @@
-'''
-import keyboard
-import os
-import time
-import msvcrt
-'''
-import game
+import game_window
 import main_menu
 import file_IO
 
-read_path = "../PokeList_v3.csv"
+poke_list_path = "../PokeList_v3.csv"
 player_data_file = "../player_data/playerData.json"
 
 def main():
@@ -20,8 +14,11 @@ def main():
     """
 
 
-    all_player_data = file_IO.fetch_json(player_data_file)
-    current_player_name = main_menu.run_menu()
+
+    poke_list = file_IO.fetch_list(poke_list_path, False)   #Get list of pokemon
+    all_player_data = file_IO.fetch_json(player_data_file)  #Convert json to dict
+    current_player_name = main_menu.run_menu()  #Get current player from UI
+
 
 
     #Check if main_menu.run_menu() returns false since that indicates quit game was selected
@@ -32,10 +29,18 @@ def main():
         current_player_data = all_player_data[current_player_name]
     else:   #For debugging
         print("main_menu.run_menu() has returned something invalid") 
-    #print("Current player data: ", current_player_data) #For debugging
+    
 
-    #Do other stuff before starting game
-    #game()
+
+    #Debug print statements
+    print("Current player data: ", current_player_data)
+    print("Current player data type: ", type(current_player_data))
+
+
+
+    #Run the game display function
+    game_window.run_game(current_player_data)
+    
 
 
 if __name__ == "__main__":
