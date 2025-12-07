@@ -4,7 +4,7 @@ import os
 import time
 import msvcrt
 '''
-import game
+import game_window
 import main_menu
 import file_IO
 
