@@ -3,16 +3,7 @@
     "name": "Noam",
     "level": 69,
     "candies": 154,
-    "pokemon": {
-      "Bulbasoar": {
-        "level": 32,
-        "type": "leaf"
-      },
-      "Charmander": {
-        "level": 12,
-        "type": "fire"
-      }
-    }
+    "pokemon": []
   },
   "Oliver": {
     "name": "Oliver",

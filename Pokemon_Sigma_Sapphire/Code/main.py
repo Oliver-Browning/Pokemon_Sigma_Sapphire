@@ -30,7 +30,7 @@ def main():
     elif current_player_name in all_player_data:
         current_player_data = all_player_data[current_player_name]
 
-        if len(current_player_data["pokemon"] == 0):
+        if len(current_player_data["pokemon"]) == 0:
             poke_list_1 = file_IO.fetch_list("../PokeList_v3.csv", False)
             game_functions.catch_pokemon(current_player_data, poke_list_1[random.randint(1,150)])
 
