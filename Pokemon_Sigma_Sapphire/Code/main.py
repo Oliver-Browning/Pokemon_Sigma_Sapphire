@@ -79,7 +79,7 @@ def main():
     else:
         print("main_menu.run_menu() has returned something invalid")
     print("After if statements", current_player_name)
-    
+    print("Current player file", current_player_file)
     current_player_data = file_IO.fetch_json(current_player_file)
 
     print("DATA after file statements", current_player_data)
