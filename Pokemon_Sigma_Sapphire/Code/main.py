@@ -1,6 +1,8 @@
 import game_window
 import main_menu
 import file_IO
+import random
+import game_functions
 
 poke_list_path = "../PokeList_v3.csv"
 player_data_file = "../player_data/playerData.json"
@@ -27,6 +29,11 @@ def main():
     #Check to see if the name returned actually exists just in case an error occurs between the UI and this file
     elif current_player_name in all_player_data:
         current_player_data = all_player_data[current_player_name]
+
+        if len(current_player_data["pokemon"] == 0):
+            poke_list_1 = file_IO.fetch_list("../PokeList_v3.csv", False)
+            game_functions.catch_pokemon(current_player_data, poke_list_1[random.randint(1,150)])
+
     else:   #For debugging
         print("main_menu.run_menu() has returned something invalid") 
     
