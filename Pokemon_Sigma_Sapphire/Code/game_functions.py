@@ -2,7 +2,8 @@ import random
 
 def award_candy():
     """
-    Words
+    Takes in no arguments. Generates a weighted random integer
+    either 3, 5, or 10 and returns it.
     """
     candy_amounts = [3, 5, 10]
     rand_int = random.randint(0,2)
