@@ -4,7 +4,7 @@ import file_IO
 def run_menu():
 
     # value that will be returned
-    player = "Player 1"
+    player = "Noam" # I'm the default cause that's how cool I am!
 
 
     # generate the main window
@@ -27,6 +27,9 @@ def run_menu():
     backCanvas.itemconfig(saveChangeBackgroundImage, state='hidden')
 
 
+    # player selected - return with their name!
+    def player_selected():
+        menuWindow.destroy()
 
 
     def show_save_change_things():
@@ -45,11 +48,13 @@ def run_menu():
         p4Reset.place(x=660, y=500, anchor="center", height=40)
 
     def hide_save_change_things(playerName):
+        nonlocal player
+        player = playerName
+
         backCanvas.itemconfig(saveChangeBackgroundImage, state='hidden')
         continueButton.configure(state='normal')
         savesButton.configure(state='normal')
-        playerSelectedLabel.configure(text=("  " + playerName + "  ")) # don't forget to show who's playing!
-        player = playerName
+        playerSelectedLabel.configure(text=("  Player: " + playerName + "  ")) # don't forget to show who's playing!
 
         # save change menu items
         p1Select.place_forget()
@@ -74,11 +79,17 @@ def run_menu():
         caller.widget['background'] = 'OrangeRed'
 
 
+    def quit_menu():
+        nonlocal player
+        player = False
+        menuWindow.destroy()
+
+
     # buttons for manipulating
-    p1Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Player 1"))
-    p2Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Player 2"))
-    p3Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Player 3"))
-    p4Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Player 4"))
+    p1Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Noam"))
+    p2Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Oliver"))
+    p3Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Logan"))
+    p4Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Shreyaan"))
     p1Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
     p2Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
     p3Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
@@ -87,16 +98,17 @@ def run_menu():
 
     # generating the MAIN menu items
 
-    playerSelectedLabel = tk.Label(menuWindow, text=("  " + "Player 1" + "  "), font="Ariel 13 bold", fg="white", bg="dark blue")
+    playerSelectedLabel = tk.Label(menuWindow, text=("  " + "Select a player!" + "  "), font="Ariel 13 bold", fg="white", bg="dark blue")
     playerSelectedLabel.place(x=165, y=432, anchor="center")
 
-    continueButton = tk.Button(menuWindow, text="Continue", font="Helvetica 21")
+    continueButton = tk.Button(menuWindow, text="Continue", font="Helvetica 21", command=player_selected)
     continueButton.place(x=165, y=470, anchor="center", height=40)
+    continueButton.configure(state='disabled')
 
     savesButton = tk.Button(menuWindow, text="Saves", font="Helvetica 21", command=show_save_change_things)
     savesButton.place(x=165, y=515, anchor="center", height=40)
 
-    quitButton = tk.Button(menuWindow, text="Quit", font="Helvetica 21", command=menuWindow.destroy)
+    quitButton = tk.Button(menuWindow, text="Quit", font="Helvetica 21", command=quit_menu)
     quitButton.place(x=165, y=560, anchor="center", height=40)
 
 
@@ -140,3 +152,5 @@ def run_menu():
     menuWindow.mainloop()
 
     return player
+
+print(run_menu())
