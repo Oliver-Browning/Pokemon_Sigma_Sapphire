@@ -59,40 +59,28 @@ game board:
 
 
 
-#player_file_locations = ["../player_data/noam.json", "../player_data/oliver.json", "../player_data/logan.json", "../player_data/shreyaan.json"]
-player_file_location_dict = {"noam": "../player_data/noam.json", 
-                             "oliver": "../player_data/oliver.json",
-                             "logan": "../player_data/logan.json",
-                             "shreyaan": "../player_data/shreyaan.json"
-                             }
 
+player_data_file = "../player_data/playerData.json"
 
 def main():
 
+    all_player_data = file_IO.fetch_json(player_data_file)
     current_player_name = main_menu.run_menu()
-    print("Before if statements", current_player_name)
+
+    #print("All player data: ", all_player_data)
+
     if current_player_name == False:
         quit()
-    elif current_player_name in player_file_location_dict.keys():
-        current_player_name = current_player_name.lower()
-        current_player_file = player_file_location_dict[current_player_name]
+    elif current_player_name in all_player_data:
+        current_player_data = all_player_data[current_player_name]
     else:
         print("main_menu.run_menu() has returned something invalid")
-    print("After if statements", current_player_name)
-    print("Current player file", current_player_file)
-    current_player_data = file_IO.fetch_json(current_player_file)
-
-    print("DATA after file statements", current_player_data)
-
-    
-    #Load player json
     
 
-
-
-
+    print("Current player data: ", current_player_data)
 
     
+
 
 
 
