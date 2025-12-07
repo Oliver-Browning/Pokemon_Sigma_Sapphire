@@ -16,6 +16,16 @@ def award_candy():
 
 #print(award_candy())
 
+import safari
+import file_IO
+import main_menu
 
+def catch_pokemon(csvString):
+    l = csvString.split(',')
+
+
+    current_player_data = file_IO.fetch_json("../player_data/playerData.json")[main_menu.run_menu()]
+    
+    current_player_data["pokemon"] += [[l[0],l[1],random.randint(l[2],l[3])]]
 
 
