@@ -3,21 +3,24 @@
     "name": "noam",
     "level": 69,
     "candies": 154,
-    "pokemon": {}
+    "pokemon": []
   },
   "Oliver": {
     "name": "oliver",
     "level": 67,
-    "candies": 237
+    "candies": 237,
+    "pokemon": []
   },
   "Logan": {
     "name": "logan",
     "level": 420,
-    "candies": 65
+    "candies": 65,
+    "pokemon": []
   },
   "Shreyaan": {
     "name": "shreyaan",
     "level": 1,
-    "candies": 0
+    "candies": 0,
+    "pokemon": []
   }
 }

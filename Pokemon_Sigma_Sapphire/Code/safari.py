@@ -5,14 +5,7 @@ import random
 import game_functions
 
 
-def run_safari():
-
-
-
-
-
-
-
+def run_safari(player_data):
 
 
 
@@ -68,19 +61,19 @@ def run_safari():
         game_won = weirdo_tuple[0][2]
         print(game_won)
         if game_won == True:
-            game_functions.catch_pokemon(selected_pokemon)
+            game_functions.catch_pokemon(player_data, selected_pokemon)
 
     def option_2_selected():
         game_won = weirdo_tuple[1][2]
         print(game_won)
         if game_won == True:
-            game_functions.catch_pokemon(selected_pokemon)
+            game_functions.catch_pokemon(player_data, selected_pokemon)
 
     def option_3_selected():
         game_won = weirdo_tuple[2][2]
         print(game_won)
         if game_won == True:
-            game_functions.catch_pokemon(selected_pokemon)
+            game_functions.catch_pokemon(player_data, selected_pokemon)
         
 
 
@@ -99,14 +92,6 @@ def run_safari():
     lab.pack()
 
     #   139,Kabuto,170,270
-
-
-    
-
-
-
-
-
 
     safari_window.mainloop()
 
