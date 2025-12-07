@@ -14,6 +14,7 @@ import game
 
 
 
+
 #Change read file path as needed for your file system
 #global read_path
 read_path = "Pokemon_Sigma_Sapphire\\PokeList_v3.csv"
@@ -64,12 +65,13 @@ game board:
 
 
 
-#player_file_locations = ["player1.json", "player2.json", "player3.json", "player4.json"]
+player_file_locations = ["../player_data/noam.json", "../player_data/oliver.json", "../player_data/logan.json", "../player_data/shreyaan.json"]
 
 def main():
-
     pass
+
     #main_menu.run_menu()
+
 
 
     
