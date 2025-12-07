@@ -1,6 +1,11 @@
 import time
 
+#Create a function with this that takes in a Hit input
+#call the function a ton of times in a while loop in the game 
+#Send the button pressed boolean as the argument for this function
 
+
+#Check if time stopped at is close enough to time target
 
 seconds = 0
 count_by = .01
