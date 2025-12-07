@@ -35,7 +35,7 @@ game = {
 
 def three_weirdos():
 
-    names = ["Okarin", "Mayuri", "Monika", "Yuri", "Sayori", "Daru", "Lelouch", "Shinei", "Light", "L", "Erwin Smith", "Eren", "Mikasa", "Levi", "Sans", "Papyrus", "Lucy", "David", "Maine", "Rebecca", "Adam Smasher", "Kiwi", "Ado"]
+    names = ["Okarin", "Mayushii", "Suzuha", "Daru", "Faris Nyan", "Daru", "Monika", "Yuri", "Sayori", "Daru", "Lelouch", "Shinei", "Light", "L", "Erwin Smith", "Eren", "Mikasa", "Levi", "Sans", "Papyrus", "Lucy", "David", "Maine", "Rebecca", "Adam Smasher", "Kiwi", "Ado"]
 
     chosen = random.sample(names, 3)
 
