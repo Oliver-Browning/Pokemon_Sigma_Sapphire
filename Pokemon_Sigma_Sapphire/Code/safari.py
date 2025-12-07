@@ -19,8 +19,8 @@ def run_safari(player_data):
 
     poke_list_1 = file_IO.fetch_list("../PokeList_v3.csv", False)
 
-    selected_pokemon = poke_list_1[random.randint(1,150)]
-
+    #selected_pokemon = poke_list_1[random.randint(1,150)]
+    
 
 
     weirdo_tuple = skyblockPuzzle.three_weirdos()
@@ -61,19 +61,42 @@ def run_safari(player_data):
         game_won = weirdo_tuple[0][2]
         print(game_won)
         if game_won == True:
-            game_functions.catch_pokemon(player_data, selected_pokemon)
+            newly_caught_pokemon = game_functions.catch_pokemon(player_data, poke_list_1[random.randint(1,150)])
+            #['61', 'Poliwrath', 256]
+            pokedex_number = int(newly_caught_pokemon[0])
+            pokemon_name = newly_caught_pokemon[1]
+            combat_power = newly_caught_pokemon[2]
+            print(f"You caught pokemon #{pokedex_number}!!!")
+            print(f"The name of the pokemon you caught is: {pokemon_name}!!!")
+            print(f"The combat power of {pokemon_name} is: {combat_power}!!!")
+
 
     def option_2_selected():
         game_won = weirdo_tuple[1][2]
         print(game_won)
         if game_won == True:
-            game_functions.catch_pokemon(player_data, selected_pokemon)
+            newly_caught_pokemon = game_functions.catch_pokemon(player_data, poke_list_1[random.randint(1,150)])
+            #['61', 'Poliwrath', 256]
+            pokedex_number = int(newly_caught_pokemon[0])
+            pokemon_name = newly_caught_pokemon[1]
+            combat_power = newly_caught_pokemon[2]
+            print(f"You caught pokemon #{pokedex_number}!!!")
+            print(f"The name of the pokemon you caught is: {pokemon_name}!!!")
+            print(f"The combat power of {pokemon_name} is: {combat_power}!!!")
+
 
     def option_3_selected():
         game_won = weirdo_tuple[2][2]
         print(game_won)
         if game_won == True:
-            game_functions.catch_pokemon(player_data, selected_pokemon)
+            newly_caught_pokemon = game_functions.catch_pokemon(player_data, poke_list_1[random.randint(1,150)])
+            #['61', 'Poliwrath', 256]
+            pokedex_number = int(newly_caught_pokemon[0])
+            pokemon_name = newly_caught_pokemon[1]
+            combat_power = newly_caught_pokemon[2]
+            print(f"You caught pokemon #{pokedex_number}!!!")
+            print(f"The name of the pokemon you caught is: {pokemon_name}!!!")
+            print(f"The combat power of {pokemon_name} is: {combat_power}!!!")
         
 
 
