@@ -43,6 +43,14 @@ def run_game(playerData, all_player_data):
         arenaFrame.place_forget()
         mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
+    def fake_full_enter():
+        arenaFrame.place_forget()
+        fullVersionFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
+    def fake_full_leave():
+        fullVersionFrame.place_forget()
+        arenaFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
 
     def update_pokemonCenterLister():
         '''
@@ -264,8 +272,12 @@ def run_game(playerData, all_player_data):
     arenaCanvas.pack(fill="both", expand=True)
     arenaEntryImage = tk.PhotoImage(file="../Images/arena_bg.png")
     arenaCanvas.create_image(0, 0, image=arenaEntryImage, anchor="nw")
-    arenaExitButton = tk.Button(arenaFrame, text="exit", font="Helvetica 21", command=arena_leave)
-    arenaExitButton.place(relx=0.5, rely=0.9, anchor="center", height=40)
+    arenaExitButton = tk.Button(arenaFrame, text="Exit", font="Helvetica 21", command=arena_leave)
+    arenaExitButton.place(relx=0.465, rely=0.95, anchor="e", height=35)
+    button_glow.bind_normal(arenaExitButton)
+    arenaFightButton = tk.Button(arenaFrame, text="Fight!", font="Helvetica 21", command=fake_full_enter)
+    arenaFightButton.place(relx=0.515, rely=0.95, anchor="w", height=35)
+    button_glow.bind_red(arenaFightButton)
 
     ## Selecting an active pokemon
     arenaActiveButton = tk.Button(arenaFrame, text="Select as Active", font="Helvatica 21", command=invoke_active)
@@ -286,13 +298,24 @@ def run_game(playerData, all_player_data):
     arenaActiveIDLabel = tk.Label(arenaFrame, text=f"ID: #{playerData['active pokemon'][0]}", font="Helvetica 14", fg="yellow", bg="#2BA4D9", anchor="e")
     arenaActiveIDLabel.place(x=690, rely=0.27, anchor="e", width=150)
 
+    # literally just a frame to fake tease the full game lol
+    fullVersionFrame = tk.Frame(gameWindow)
+    fullVersionCanvas = tk.Canvas(fullVersionFrame, width=800, height=600)
+    fullVersionCanvas.pack(fill="both", expand=True)
+    fullVersionBackgroundImage = tk.PhotoImage(file="../Images/pokemon_center_bg.png")
+    fullVersionCanvas.create_image(0, 0, image=fullVersionBackgroundImage, anchor="nw")
+    fullVersionCanvasContinueButton = tk.Button(fullVersionFrame, text="Continue", font="Helvetica 21", command=fake_full_leave)
+    fullVersionCanvasContinueButton.place(relx=0.5, rely=0.9425, anchor="center", height=40)
+    button_glow.bind_normal(fullVersionCanvasContinueButton)
+
+
 
     ##### Generating pokemon center frame
     pokemonCenterFrame = tk.Frame(gameWindow) #pokemonCenter
     pokemonCenterCanvas = tk.Canvas(pokemonCenterFrame, width=800, height=600)
     pokemonCenterCanvas.pack(fill="both", expand=True)
-    pokemonCenterEntryImage = tk.PhotoImage(file="../Images/pokemon_center_bg.png")
-    pokemonCenterCanvas.create_image(0, 0, image=pokemonCenterEntryImage, anchor="nw")
+    pokemonCenterBackgroundImage = tk.PhotoImage(file="../Images/pokemon_center_bg.png")
+    pokemonCenterCanvas.create_image(0, 0, image=pokemonCenterBackgroundImage, anchor="nw")
     pokemonCenterExitButton = tk.Button(pokemonCenterFrame, text="exit", font="Helvetica 21", command=pokemonCenter_leave)
     button_glow.bind_normal(pokemonCenterExitButton)
     pokemonCenterExitButton.place(relx=0.5, rely=0.9425, anchor="center", height=40)
