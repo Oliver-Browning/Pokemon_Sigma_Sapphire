@@ -90,6 +90,7 @@ def level_pokemon(pokemon_name, player_data):
 
 
 def save_player_data(current_player_data, all_player_data, candy_awarded = 0):
+    #all_player_data = all_player_data[:]
 
     print(f"Inside of save_player_data() BEFORE MAKING CANDY CHANGES. The current player data is: {current_player_data}")
 
@@ -101,9 +102,9 @@ def save_player_data(current_player_data, all_player_data, candy_awarded = 0):
 
     current_player_name = current_player_data["name"]
 
-    print(f"Inside of save_player_data(). The current all_player_data is: {all_player_data}")
+    
     all_player_data[current_player_name] = current_player_data
-
+    print(f"Inside of save_player_data(). The current all_player_data is: {all_player_data}")
 
     file_IO.push_json(player_data_file, all_player_data, "w")
 

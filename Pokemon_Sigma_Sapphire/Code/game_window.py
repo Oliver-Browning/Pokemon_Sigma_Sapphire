@@ -75,7 +75,7 @@ def run_game(playerData, all_player_data):
         '''
         # this is its own function because we need to update the GUI as well as do the internal updates!
         game_functions.level_pokemon(pokemonCenterSelecterInput.get(),playerData)
-        pokemonCenterCandyCountLabel.configure(playerData["candies"])
+        pokemonCenterCandyCountLabel.configure(text = str(playerData["candies"]))   #We changed this to text = and it WORKS!
 
         update_pokemonCenterLister()
 

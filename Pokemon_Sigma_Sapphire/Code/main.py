@@ -4,6 +4,8 @@ import file_IO
 import random
 import game_functions
 
+#FIX CANDIES NOT SHOWING UP
+
 #The different file paths for the json and csv files
 poke_list_path = "../PokeList_v3.csv"
 player_data_file = "../player_data/playerData.json"

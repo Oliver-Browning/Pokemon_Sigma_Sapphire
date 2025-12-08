@@ -1,16 +1,9 @@
 {
     "Noam": {
         "name": "Noam",
-        "level": 567563451,
-        "candies": 3450,
-        "pokemon": [
-            [
-                "41",
-                "Golbat",
-                318,
-                1
-            ]
-        ]
+        "level": 1,
+        "candies": 0,
+        "pokemon": []
     },
     "Oliver": {
         "name": "Oliver",
@@ -21,14 +14,32 @@
                 "57",
                 "Growlithe",
                 290,
+                5
+            ],
+            [
+                "13",
+                "Weedle",
+                169,
+                19
+            ],
+            [
+                "16",
+                "Pidgey",
+                170,
+                1
+            ],
+            [
+                "38",
+                "Jigglypuff",
+                197,
                 1
             ]
         ]
     },
     "Logan": {
         "name": "Logan",
-        "level": 1567,
-        "candies": 5670,
+        "level": 1,
+        "candies": 0,
         "pokemon": []
     },
     "Shreyaan": {
