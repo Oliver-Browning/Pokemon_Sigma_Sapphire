@@ -8,16 +8,19 @@
   "Oliver": {
     "name": "Oliver",
     "level": 67,
-    "candies": 237
+    "candies": 237,
+    "pokemon": []
   },
   "Logan": {
-    "name": "Oliver",
+    "name": "Logan",
     "level": 420,
-    "candies": 65
+    "candies": 65,
+    "pokemon": []
   },
   "Shreyaan": {
     "name": "Shreyaan",
     "level": 1,
-    "candies": 0
+    "candies": 0,
+    "pokemon": []
   }
 }
