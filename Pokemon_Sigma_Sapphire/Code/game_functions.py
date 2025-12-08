@@ -1,14 +1,16 @@
 import random
 
-def award_candy():
+def award_candy(current_player_data):
     """
-    Takes in no arguments. Generates a weighted random integer
+    Generates a weighted random integer
     either 3, 5, or 10 and returns it. 
     """
     candy_amounts = [3, 5, 10]
     rand_int = random.randint(0,2)
 
     candy_awarded = (random.choices(candy_amounts, weights=(50, 40, 10)))[0]
+    current_player_data["candies"] += candy_awarded
+
 
     return candy_awarded
     

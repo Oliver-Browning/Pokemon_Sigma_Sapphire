@@ -7,9 +7,6 @@ import game_functions
 
 def run_safari(player_data):
 
-
-
-
     safari_window = tk.Tk()
 
     safari_window.geometry("800x600")
@@ -17,15 +14,11 @@ def run_safari(player_data):
     safari_window.title("Safari")
 
 
+    #Fetch the pokemon list and generate the minigame tuple
     poke_list_1 = file_IO.fetch_list("../PokeList_v3.csv", False)
-
-    #selected_pokemon = poke_list_1[random.randint(1,150)]
-    
-
-
     weirdo_tuple = skyblockPuzzle.three_weirdos()
 
-
+    #Assign names and dialogues from the tuple to individual variables
     weirdo_1_name = weirdo_tuple[0][0]       
     weirdo_1_dialogue = weirdo_tuple[0][1]      #Write this to tkinter, Noam
 
@@ -56,9 +49,11 @@ def run_safari(player_data):
         else:
             print("Something has gone very wrong with option_selected()")
 
-        #Check if game has been won, if so, pick a random pokemon and add it to the player's pokedex
+
+        #Check if game has been won, if so, pick a random pokemon and add it to the player's pokedex and award a random amount of candy
         if game_won == True:
             newly_caught_pokemon = game_functions.catch_pokemon(player_data, poke_list_1[random.randint(1,150)])
+            candy_awarded = game_functions.award_candy(player_data)
 
             #Assign the different pieces of info about the newly caught pokemon to their respective variables
             pokedex_number = int(newly_caught_pokemon[0])
@@ -69,6 +64,7 @@ def run_safari(player_data):
             print(f"You caught pokemon #{pokedex_number}!!!")                   #Write this to tkinter, Noam
             print(f"The name of the pokemon you caught is: {pokemon_name}!!!")  #Write this to tkinter, Noam
             print(f"The combat power of {pokemon_name} is: {combat_power}!!!")  #Write this to tkinter, Noam
+            print(f"You have been awarded {candy_awarded} candies!!!")          #Write this to tkinter, Noam
         
 
 
@@ -76,9 +72,7 @@ def run_safari(player_data):
     option_1 = tk.Button(safari_window, text = weirdo_1_name, command = lambda: option_selected(1))
     option_2 = tk.Button(safari_window, text = weirdo_2_name, command = lambda: option_selected(2))
     option_3 = tk.Button(safari_window, text = weirdo_3_name, command = lambda: option_selected(3))
-    #option_4 = tk.Button(safari_window, text = game_won)
 
-    #T = tk.Text(safari_window, height = "5", width = "10")
     lab = tk.Label(safari_window, text=game_won)
 
     option_1.pack()
