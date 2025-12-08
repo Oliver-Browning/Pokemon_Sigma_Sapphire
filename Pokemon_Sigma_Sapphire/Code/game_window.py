@@ -273,7 +273,7 @@ def run_game(playerData, all_player_data):
 
 
                     # save the player data
-                    game_functions.save_player_data(playerData, all_player_data, candy_awarded)
+                    game_functions.save_player_data(playerData, all_player_data)#, candy_awarded) #This fixed the double candy glitch
 
                     opponentNameLabel.configure(text="Team Rocket blasting off again!")
                     opponentRiddleLabel.configure(text=f"{opponent_tuple[opponent][0]} had your catch! You give Team Rocket the boot, gained {candy_awarded} candies, and added a pokemon to your team!"
