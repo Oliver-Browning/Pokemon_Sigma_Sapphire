@@ -45,7 +45,16 @@ def main():
             #Check if the player has any pokemon, and if not, they are assigned a random pokemon
             if len(current_player_data["pokemon"]) == 0:
                 #poke_list_1 = file_IO.fetch_list("../PokeList_v3.csv", False)
-                game_functions.catch_pokemon(current_player_data, poke_list[random.randint(1,150)])
+                game_functions.catch_pokemon(current_player_data, poke_list[random.randint(0,149)])
+                game_functions.save_player_data(current_player_data, all_player_data)
+
+                all_player_data = file_IO.fetch_json(player_data_file) 
+                current_player_data = all_player_data[current_player_name]
+                
+                print("THIS IS THE CURRENT PLAYER DATA: ", current_player_data)
+                pokemon_name = current_player_data["pokemon"][0][1]
+                game_functions.active_pokemon(pokemon_name, current_player_data)
+
 
         else:   #For debugging
             print("main_menu.run_menu() has returned something invalid")
@@ -57,8 +66,8 @@ def main():
 
 
         #Debug print statements
-        print("Current player data: ", current_player_data)
-        print("Current player data type: ", type(current_player_data))
+        #print("Current player data: ", current_player_data)
+        #print("Current player data type: ", type(current_player_data))
 
 
 
