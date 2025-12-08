@@ -295,3 +295,7 @@ def run_game(playerData, all_player_data):
 
 
     gameWindow.mainloop()
+
+
+if __name__ == "__main__":
+    run_game(file_IO.fetch_json("../player_data/playerData.json")["Noam"], file_IO.fetch_json("../player_data/playerData.json"))
