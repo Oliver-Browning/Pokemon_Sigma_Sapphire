@@ -4,10 +4,6 @@ import file_IO
 import random
 import game_functions
 
-#FIX CANDIES NOT SHOWING UP -----> FIXED!      NO IT IS NOT FIXED! FIX AGAIN IN THE MORNING
-#Make a way to select an active pokemon in the pokemon center
-#Make arena work
-#Add a return to main menu button appear at the bottom of the stone path in the main map area
 
 #The different file paths for the json and csv files
 poke_list_path = "../PokeList_v3.csv"
@@ -20,8 +16,6 @@ def main():
     some of the necessary primary variables like player data
     and the pokemon csv.
     """
-
-
 
     poke_list = file_IO.fetch_list(poke_list_path, False)   #Get list of pokemon
     all_player_data = file_IO.fetch_json(player_data_file)  #Convert json to dict

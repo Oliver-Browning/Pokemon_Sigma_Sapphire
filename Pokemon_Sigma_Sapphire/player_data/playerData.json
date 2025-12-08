@@ -29,14 +29,38 @@
         "name": "Logan",
         "level": 1,
         "candies": 0,
-        "pokemon": [],
-        "active pokemon": ""
+        "pokemon": [
+            [
+                "97",
+                "Krabby",
+                169,
+                1
+            ]
+        ],
+        "active pokemon": [
+            "97",
+            "Krabby",
+            169,
+            1
+        ]
     },
     "Shreyaan": {
         "name": "Shreyaan",
         "level": 1,
         "candies": 0,
-        "pokemon": [],
-        "active pokemon": ""
+        "pokemon": [
+            [
+                "14",
+                "Kakuna",
+                143,
+                1
+            ]
+        ],
+        "active pokemon": [
+            "14",
+            "Kakuna",
+            143,
+            1
+        ]
     }
 }
