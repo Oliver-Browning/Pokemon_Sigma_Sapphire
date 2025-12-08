@@ -1,12 +1,11 @@
 import tkinter as tk
 import file_IO
 import game_functions
-import safari
 import button_glow
 import skyblockPuzzle
 import random
 
-def run_game(playerData):
+def run_game(playerData, all_player_data):
 
     # the usual general setup
     gameWindow = tk.Tk()
@@ -78,13 +77,13 @@ def run_game(playerData):
 
                 # show the choice buttons!
                 choice1Button = tk.Button(safariFrame, text=opponent_tuple[0][0], font="Helvetica 14", command=lambda: select_opponent(0))
-                choice1Button.place(x=150, y=250, height=40, anchor="e")
+                choice1Button.place(x=150, y=280, height=40, anchor="e")
                 button_glow.bind_normal(choice1Button)
                 choice2Button = tk.Button(safariFrame, text=opponent_tuple[1][0], font="Helvetica 14", command=lambda: select_opponent(1))
-                choice2Button.place(x=150, y=350, height=40, anchor="e")
+                choice2Button.place(x=150, y=370, height=40, anchor="e")
                 button_glow.bind_normal(choice2Button)
                 choice3Button = tk.Button(safariFrame, text=opponent_tuple[2][0], font="Helvetica 14", command=lambda: select_opponent(2))
-                choice3Button.place(x=150, y=450, height=40, anchor="e")
+                choice3Button.place(x=150, y=460, height=40, anchor="e")
                 button_glow.bind_normal(choice3Button)
 
             def select_opponent(opponent):
@@ -117,8 +116,12 @@ def run_game(playerData):
 
                 if opponent_tuple[opponent][2]: # true if correct!
                     pokeList = file_IO.fetch_list("../PokeList_v3.csv", False)
-                    newPokemon = game_functions.catch_pokemon(playerData,pokeList[random.randint(1, 150)])
+                    newPokemon, playerData = game_functions.catch_pokemon(playerData,pokeList[random.randint(1, 150)])
                     candy_awarded = game_functions.award_candy(playerData)
+
+
+                    # save the player data
+                    game_functions.save_player_data(playerData, all_player_data, candy_awarded)
 
                     opponentNameLabel.configure(text="Team Rocket blasting off again!")
                     opponentRiddleLabel.configure(text=f"{opponent_tuple[opponent][0]} had your catch! You give Team Rocket the boot, gained {candy_awarded} candies, and added a pokemon to your team!"
