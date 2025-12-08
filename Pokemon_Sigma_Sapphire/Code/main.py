@@ -24,6 +24,9 @@ def main():
     # the whole thing is put into a while true, that way it keeps returning to the main menu until quit is pressed!
     while True:
         current_player_name = main_menu.run_menu()  #Get current player from UI
+        
+        poke_list = file_IO.fetch_list(poke_list_path, False)   #Get list of pokemon
+        all_player_data = file_IO.fetch_json(player_data_file)  #Convert json to dict
 
 
 

@@ -35,7 +35,7 @@ def catch_pokemon(current_player_data, csvString):
     print("Inside of game_functions. Current player data: ", current_player_data)
     return pokemon, current_player_data
 
-                    #Data of pokemon          
+                #ONLY GIVEN POKEMON NAME          
 def level_pokemon(selected_pokemon_data, candies_available, candies_to_feed):
     #parse through data and pull out the current level
     #We will need to add pokemon level into their tracked attributes

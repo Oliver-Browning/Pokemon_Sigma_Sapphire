@@ -1,38 +1,19 @@
 {
     "Noam": {
         "name": "Noam",
-        "level": 69,
-        "candies": 164,
-        "pokemon": [
-            [
-                "67",
-                "Machamp",
-                406,
-                1
-            ],
-            [
-                "73",
-                "Geodude",
-                157,
-                1
-            ]
-        ]
+        "level": 1,
+        "candies": 0,
+        "pokemon": []
     },
     "Oliver": {
         "name": "Oliver",
-        "level": 67,
-        "candies": 243,
+        "level": 1,
+        "candies": 0,
         "pokemon": [
             [
-                "43",
-                "Gloom",
-                229,
-                1
-            ],
-            [
-                "65",
-                "Machop",
-                154,
+                "50",
+                "Dugtrio",
+                279,
                 1
             ]
         ]
@@ -41,14 +22,7 @@
         "name": "Logan",
         "level": 1,
         "candies": 0,
-        "pokemon": [
-            [
-                "19",
-                "Rattata",
-                108,
-                1
-            ]
-        ]
+        "pokemon": []
     },
     "Shreyaan": {
         "name": "Shreyaan",
