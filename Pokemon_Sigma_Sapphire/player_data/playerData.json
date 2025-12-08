@@ -3,8 +3,20 @@
         "name": "Noam",
         "level": 1,
         "candies": 0,
-        "pokemon": [],
-        "active pokemon": ""
+        "pokemon": [
+            [
+                "39",
+                "Wigglytuff",
+                261,
+                1
+            ]
+        ],
+        "active pokemon": [
+            "39",
+            "Wigglytuff",
+            261,
+            1
+        ]
     },
     "Oliver": {
         "name": "Oliver",

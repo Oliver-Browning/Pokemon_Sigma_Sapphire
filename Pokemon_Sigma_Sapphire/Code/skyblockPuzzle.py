@@ -1,3 +1,15 @@
+# By submitting this assignment, I agree to the following:
+# "Aggies do not lie, cheat, or steal, or tolerate those who do."
+# "I have not given or received any unauthorized aid on this assignment."
+#
+# Names: Logan Stephens
+# Shreyaan Nath
+# Oliver Browning
+# Noam Amihai
+# Section: 209
+# Assignment: Team LAB 13: Part 1
+# Date: 8 December 2025
+
 import random
 
 
@@ -38,9 +50,12 @@ game = {
 
 def three_weirdos():
     """
-    Returns a list of three tuples, each containing:
-    (person's name, their statement, whether they are telling the truth)
-    The first person in the list is always telling the truth and then it shuffles it.
+    Takes in no parameters and runs the minigame that will be used to catch pokemon. Chooses a random 
+    game out of the 6 from the dictionary above by using "seed", and selects names from a list of
+    popular anime/video games (Steins;Gate, Death Note, Cyberpunk: Edgerunners, etc.) as the
+    people in these puzzles. This is a variation on a popular logic puzzle that involves determining
+    who must be lying/telling the truth, and can be solved by using tables or other forms of logic.
+    These specific examples were taken from the Three Weirdos dungeon puzzle in Hypixel Skyblock.
     """
 
     names = ["Okarin", "Mayushii", "Suzuha", "Faris Nyan", "Monika", "Yuri", "Sayori", "Daru", "Lelouch", "Shinei", "Light", "Detective L.", "Erwin Smith", "Eren", "Mikasa", "Levi", "Sans", "Papyrus", "Lucy", "David", "Maine", "Rebecca", "Adam Smasher", "Kiwi", "Ado"]

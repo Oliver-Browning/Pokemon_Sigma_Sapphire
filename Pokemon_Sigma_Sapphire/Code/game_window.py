@@ -1,3 +1,15 @@
+# By submitting this assignment, I agree to the following:
+# "Aggies do not lie, cheat, or steal, or tolerate those who do."
+# "I have not given or received any unauthorized aid on this assignment."
+#
+# Names: Logan Stephens
+# Shreyaan Nath
+# Oliver Browning
+# Noam Amihai
+# Section: 209
+# Assignment: Team LAB 13: Part 1
+# Date: 8 December 2025
+
 import tkinter as tk
 from tkinter import ttk
 from tkinter import scrolledtext
@@ -372,7 +384,7 @@ def run_game(playerData, all_player_data):
     fullVersionFrame = tk.Frame(gameWindow)
     fullVersionCanvas = tk.Canvas(fullVersionFrame, width=800, height=600)
     fullVersionCanvas.pack(fill="both", expand=True)
-    fullVersionBackgroundImage = tk.PhotoImage(file="../Images/pokemon_center_bg.png")
+    fullVersionBackgroundImage = tk.PhotoImage(file="../Images/fullVersion_bg.png")
     fullVersionCanvas.create_image(0, 0, image=fullVersionBackgroundImage, anchor="nw")
     fullVersionCanvasContinueButton = tk.Button(fullVersionFrame, text="Continue", font="Helvetica 21", command=fake_full_leave)
     fullVersionCanvasContinueButton.place(relx=0.5, rely=0.9425, anchor="center", height=40)
