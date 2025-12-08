@@ -51,6 +51,11 @@ def push_json(file_path, dictionary, mode):
     """
     with open(file_path, mode="w") as file:
         try:
-            json.dump(dictionary, file, mode)
+            json.dump(dictionary, file, indent = 4) #For possible future reference, the error being caused was due to passing in a mode argument that wasnt meant to be there
         except:
-            return False
+            print("SOMETHING BROKE")
+            print(f"This is the filepath: {file_path}")
+            print(f"This is the mode: {mode}")
+            print(f"This is the all_player_data that was passed in to the function: {dictionary}")
+            print(f"This is the datatype of all_player_data: {type(dictionary)}")
+            #return False

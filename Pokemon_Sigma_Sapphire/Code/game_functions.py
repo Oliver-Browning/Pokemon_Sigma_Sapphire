@@ -1,5 +1,7 @@
 import random
 
+player_data_file = "../player_data/playerData.json"
+
 def award_candy(current_player_data):
     """
     Generates a weighted random integer
@@ -78,7 +80,7 @@ def save_player_data(current_player_data, all_player_data, candy_awarded = 0):
     all_player_data[current_player_name] = current_player_data
 
 
-    file_IO.push_json(all_player_data)
+    file_IO.push_json(player_data_file, all_player_data, "w")
 
 
 

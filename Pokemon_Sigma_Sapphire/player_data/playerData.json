@@ -1,26 +1,51 @@
 {
-  "Noam": {
-    "name": "Noam",
-    "level": 69,
-    "candies": 154,
-    "pokemon": []
-  },
-  "Oliver": {
-    "name": "Oliver",
-    "level": 67,
-    "candies": 237,
-    "pokemon": []
-  },
-  "Logan": {
-    "name": "Logan",
-    "level": 420,
-    "candies": 65,
-    "pokemon": []
-  },
-  "Shreyaan": {
-    "name": "Shreyaan",
-    "level": 1,
-    "candies": 0,
-    "pokemon": []
-  }
+    "Noam": {
+        "name": "Noam",
+        "level": 69,
+        "candies": 190,
+        "pokemon": [
+            [
+                "129",
+                "Gyarados",
+                383,
+                1
+            ],
+            [
+                "141",
+                "Aerodactyl",
+                305,
+                1
+            ],
+            [
+                "88",
+                "Muk",
+                384,
+                1
+            ],
+            [
+                "26",
+                "Raichu",
+                251,
+                1
+            ]
+        ]
+    },
+    "Oliver": {
+        "name": "Oliver",
+        "level": 67,
+        "candies": 237,
+        "pokemon": []
+    },
+    "Logan": {
+        "name": "Logan",
+        "level": 420,
+        "candies": 65,
+        "pokemon": []
+    },
+    "Shreyaan": {
+        "name": "Shreyaan",
+        "level": 1,
+        "candies": 0,
+        "pokemon": []
+    }
 }
