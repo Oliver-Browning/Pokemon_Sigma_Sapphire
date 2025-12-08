@@ -57,7 +57,7 @@ def catch_pokemon(current_player_data, csvString):
     pokemon = [l[0],l[1],random.randint( int(l[2]),int(l[3])), 1]
     current_player_data["pokemon"] += [pokemon]
 
-    print("Inside of game_functions. Current player data: ", current_player_data)
+    # print("Inside of game_functions. Current player data: ", current_player_data)
     return pokemon, current_player_data
 
                 #ONLY GIVEN POKEMON NAME           
@@ -138,19 +138,19 @@ def save_player_data(current_player_data, all_player_data, candy_awarded = 0):
     """
     #all_player_data = all_player_data[:]
 
-    print(f"Inside of save_player_data() BEFORE MAKING CANDY CHANGES. The current player data is: {current_player_data}")
+    # print(f"Inside of save_player_data() BEFORE MAKING CANDY CHANGES. The current player data is: {current_player_data}")
 
     #Updating candies logic
     previous_candy_count = current_player_data["candies"]
     current_player_candies_updated = previous_candy_count + candy_awarded
     current_player_data["candies"] = current_player_candies_updated
-    print(f"Inside of save_player_data() AFTER MAKING CANDY CHANGES. The current player data is: {current_player_data}")
+    # print(f"Inside of save_player_data() AFTER MAKING CANDY CHANGES. The current player data is: {current_player_data}")
 
     current_player_name = current_player_data["name"]
 
     
     all_player_data[current_player_name] = current_player_data
-    print(f"Inside of save_player_data(). The current all_player_data is: {all_player_data}")
+    # print(f"Inside of save_player_data(). The current all_player_data is: {all_player_data}")
 
     file_IO.push_json(player_data_file, all_player_data, "w")
 
@@ -166,8 +166,8 @@ def active_pokemon(pokemon_name, player_data):
     field within player_data and writes the updated data back to disk.
 
     """
-    print(f"Inside active_pokemon() in game_functions. pokemon_name: {pokemon_name}")
-    print(f"Inside active_pokemon() in game_functions BEFORE CODE. player_data: {player_data}")
+    # print(f"Inside active_pokemon() in game_functions. pokemon_name: {pokemon_name}")
+    # print(f"Inside active_pokemon() in game_functions BEFORE CODE. player_data: {player_data}")
 
     selected_pokemon_data = player_data["pokemon"]
     where_is_my_pokemon = 0
@@ -184,10 +184,10 @@ def active_pokemon(pokemon_name, player_data):
 
     all_player_data = file_IO.fetch_json(player_data_file)
 
-    print(f"Inside active_pokemon() in game_functions AFTER CODE. player_data: {player_data}")
+    # print(f"Inside active_pokemon() in game_functions AFTER CODE. player_data: {player_data}")
 
     save_player_data(player_data, all_player_data)
 
-    print(f"Inside active_pokemon() in game_functions. active_pokemon: {active_pokemon}")
+    # print(f"Inside active_pokemon() in game_functions. active_pokemon: {active_pokemon}")
 
     
