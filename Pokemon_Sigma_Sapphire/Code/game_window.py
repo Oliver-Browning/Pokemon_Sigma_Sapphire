@@ -169,8 +169,9 @@ def run_game(playerData, all_player_data):
     arenaButton.place(x=640, y=430, anchor="center", width=192, height=130)
 
     # safari
-    safariButton = tk.Button(mainMapFrame, text="safari", activebackground="sky blue", relief="flat", command=safari_enter)
-    safariButton.place(relx=0.2, rely=0.2, anchor="center")
+    safariButtonImage = tk.PhotoImage(file="../Images/safari_Truck.png")
+    safariButton = tk.Button(mainMapFrame, image=safariButtonImage, relief="flat", command=safari_enter)
+    safariButton.place(x=121, y=158, width=61, height=35, anchor="nw")
 
 
     ##### generating the tutorial house frame
