@@ -121,7 +121,7 @@ def run_game(playerData):
                     candy_awarded = game_functions.award_candy(playerData)
 
                     opponentNameLabel.configure(text="Team Rocket blasting off again!")
-                    opponentRiddleLabel.configure(text=f"{opponent_tuple[opponent][0]} had your catch! You give team rocket the boot, gained {candy_awarded} candies, and added a pokemon to your team!"
+                    opponentRiddleLabel.configure(text=f"{opponent_tuple[opponent][0]} had your catch! You give Team Rocket the boot, gained {candy_awarded} candies, and added a pokemon to your team!"
                                                   + f"\n#{int(newPokemon[0])} {newPokemon[1]}, {newPokemon[2]} C.P.", wraplength=700, justify="left")
                 else:
                     opponentNameLabel.configure(text="They got away...")
