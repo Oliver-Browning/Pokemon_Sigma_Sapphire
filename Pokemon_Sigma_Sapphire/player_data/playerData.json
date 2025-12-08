@@ -2,30 +2,18 @@
     "Noam": {
         "name": "Noam",
         "level": 69,
-        "candies": 190,
+        "candies": 164,
         "pokemon": [
             [
-                "129",
-                "Gyarados",
-                383,
+                "67",
+                "Machamp",
+                406,
                 1
             ],
             [
-                "141",
-                "Aerodactyl",
-                305,
-                1
-            ],
-            [
-                "88",
-                "Muk",
-                384,
-                1
-            ],
-            [
-                "26",
-                "Raichu",
-                251,
+                "73",
+                "Geodude",
+                157,
                 1
             ]
         ]
@@ -38,8 +26,8 @@
     },
     "Logan": {
         "name": "Logan",
-        "level": 420,
-        "candies": 65,
+        "level": 1,
+        "candies": 0,
         "pokemon": []
     },
     "Shreyaan": {

@@ -2,6 +2,7 @@ import tkinter as tk
 import file_IO
 import button_glow
 import os
+import game_functions
 
 def run_menu():
     '''
@@ -86,14 +87,6 @@ def run_menu():
         p4Label.place_forget()
 
 
-
-    def reset_save_file(playerName):
-        nonlocal players
-        players[playerName]["level"] = 1
-        players[playerName]["candies"] = 0
-        players[playerName]["pokemon"] = []
-
-
     def quit_menu():
         nonlocal player
         player = False
@@ -125,16 +118,27 @@ def run_menu():
                                          + ", Candies: " + str(players[playerNames[3]]["candies"])
                                          ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
 
+    #Resets the selected player
+    def reset_player(player_name):
+        blank_player_dict = {'name': player_name, 'level': 1, 'candies': 0, 'pokemon': []}
+        player_data_file = "../player_data/playerData.json"
+        all_player_data = file_IO.fetch_json(player_data_file)
+        #print(f"ALL PLAYER DATA: {all_player_data}")
+        game_functions.save_player_data(blank_player_dict, all_player_data)
+
+
 
     # buttons for manipulating
     p1Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things(playerNames[0]))
     p2Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things(playerNames[1]))
     p3Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things(playerNames[2]))
     p4Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things(playerNames[3]))
-    p1Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
-    p2Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
-    p3Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
-    p4Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
+
+    #Player reset buttons
+    p1Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[0]))
+    p2Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[1]))
+    p3Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[2]))
+    p4Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[3]))
 
 
     # generating the MAIN menu items
