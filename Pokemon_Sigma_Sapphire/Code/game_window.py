@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 from tkinter import scrolledtext
 import file_IO
 import game_functions
@@ -32,6 +33,11 @@ def run_game(playerData, all_player_data):
         mainMapFrame.place_forget()
         arenaFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
+        # update dropdown selector!
+        # updating the selection dropdown!
+        pokeNameList = [pokemon[1] for pokemon in playerData["pokemon"]]
+        arenaSelector.configure(values=pokeNameList)
+
 
     def arena_leave():
         arenaFrame.place_forget()
@@ -60,6 +66,10 @@ def run_game(playerData, all_player_data):
         mainMapFrame.place_forget()
         pokemonCenterFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
+        # updating the selection dropdown!
+        pokeNameList = [pokemon[1] for pokemon in playerData["pokemon"]]
+        pokemonCenterSelector.configure(values=pokeNameList)
+
         update_pokemonCenterLister()
 
 
@@ -75,7 +85,7 @@ def run_game(playerData, all_player_data):
         Called while in the pokemon cent
         '''
         # this is its own function because we need to update the GUI as well as do the internal updates!
-        game_functions.level_pokemon(pokemonCenterSelecterInput.get(),playerData)
+        game_functions.level_pokemon(pokemonCenterSelector.get(),playerData)
         pokemonCenterCandyCountLabel.configure(text = str(playerData["candies"]))   #We changed this to text = and it WORKS!
 
         update_pokemonCenterLister()
@@ -235,9 +245,20 @@ def run_game(playerData, all_player_data):
     stonePathMenuButton.place(x=400-(32/2), y=600-32, width=32, height=32, anchor="nw")
     #Returning to main menu stuff
 
+    # ACTIVE POKEMON FUNCTION
+    def invoke_active():
+        """
+        Docstring for invoke_active
+        """
 
+        game_functions.active_pokemon(arenaSelector.get(), playerData)
 
-    #Generating the arena frame
+        arenaActiveLabel.configure(text=str(playerData["active pokemon"][1]))
+        arenaActiveLevelLabel.configure(text=("Level " + str(playerData["active pokemon"][3])))
+        arenaActiveComPowerLabel.configure(text=f"Combat Power: {playerData["active pokemon"][2]}")
+        arenaActiveIDLabel.configure(text=f"ID: #{playerData['active pokemon'][0]}")
+
+    ##### Generating the arena frame
     arenaFrame = tk.Frame(gameWindow)
     arenaCanvas = tk.Canvas(arenaFrame, width=800, height=600)
     arenaCanvas.pack(fill="both", expand=True)
@@ -246,7 +267,27 @@ def run_game(playerData, all_player_data):
     arenaExitButton = tk.Button(arenaFrame, text="exit", font="Helvetica 21", command=arena_leave)
     arenaExitButton.place(relx=0.5, rely=0.9, anchor="center", height=40)
 
-    #Generating pokemon center frame
+    ## Selecting an active pokemon
+    arenaActiveButton = tk.Button(arenaFrame, text="Select as Active", font="Helvatica 21", command=invoke_active)
+    arenaActiveButton.place(relx=0.7, rely=0.1125, anchor="center", height=40)  # Change the location of this to be correct
+    button_glow.bind_normal(arenaActiveButton)
+
+    # Selector box
+    pokeNameList = [pokemon[1] for pokemon in playerData["pokemon"]]
+    arenaSelector = ttk.Combobox(arenaFrame, font="Helvetica 21", values=pokeNameList, state="readonly")
+    arenaSelector.place(relx=0.35, rely=0.1125, relwidth=0.4, anchor="center", height=40)
+
+    arenaActiveLabel = tk.Label(arenaFrame, text=playerData["active pokemon"][1], font="Helvetica 28", fg="yellow", bg="#2BA4D9", anchor="w")
+    arenaActiveLabel.place(x=240, rely=0.2075, anchor="w", width=300)
+    arenaActiveLevelLabel = tk.Label(arenaFrame, text=("Level " + str(playerData["active pokemon"][3])), font="Helvetica 28", fg="yellow", bg="#2BA4D9", anchor="e")
+    arenaActiveLevelLabel.place(x=690, rely=0.2075, anchor="e", width=150)
+    arenaActiveComPowerLabel = tk.Label(arenaFrame, text=f"Combat Power: {playerData["active pokemon"][2]}", font="Helvetica 14", fg="yellow", bg="#2BA4D9", anchor="w")
+    arenaActiveComPowerLabel.place(x=240, rely=0.27, anchor="w", width=300)
+    arenaActiveIDLabel = tk.Label(arenaFrame, text=f"ID: #{playerData['active pokemon'][0]}", font="Helvetica 14", fg="yellow", bg="#2BA4D9", anchor="e")
+    arenaActiveIDLabel.place(x=690, rely=0.27, anchor="e", width=150)
+
+
+    ##### Generating pokemon center frame
     pokemonCenterFrame = tk.Frame(gameWindow) #pokemonCenter
     pokemonCenterCanvas = tk.Canvas(pokemonCenterFrame, width=800, height=600)
     pokemonCenterCanvas.pack(fill="both", expand=True)
@@ -261,24 +302,11 @@ def run_game(playerData, all_player_data):
     pokemonCenterLister.configure(state="disabled") # done, so we can keep the player from editing it!
 
 
-
-    #ACTIVE POKEMON FUNCTION
-    def invoke_active():
-        """
-        Docstring for invoke_active
-        """
-
-        game_functions.active_pokemon(pokemonCenterSelecterInput.get(),playerData)
-
-        pokemonCenterActiveLabel.configure(text = str(playerData["active pokemon"][1]))
-
-        #update_pokemonCenterLister() We might not need to actually do this here or at all for the active pokemon function
-
-
     # feeding related stuff
-    #Text box
-    pokemonCenterSelecterInput = tk.Entry(pokemonCenterFrame, font="Helvetica 21")
-    pokemonCenterSelecterInput.place(relx=0.5, rely=0.8, relwidth=0.4, anchor="center", height=40)
+    # Selector box
+    pokeNameList = [pokemon[1] for pokemon in playerData["pokemon"]]
+    pokemonCenterSelector = ttk.Combobox(pokemonCenterFrame, font="Helvetica 21", values=pokeNameList, state="readonly")
+    pokemonCenterSelector.place(relx=0.5, rely=0.8, relwidth=0.4, anchor="center", height=40)
 
     #Feed Button
     pokemonCenterFeedButton = tk.Button(pokemonCenterFrame, text="Feed", font="Helvatica 21", command=invoke_feeding)
@@ -291,22 +319,6 @@ def run_game(playerData, all_player_data):
     
     pokemonCenterCandyCandyLabel = tk.Label(pokemonCenterFrame, text="Candy:", font="Helvetica 14", fg="yellow", bg="#2BA4D9")
     pokemonCenterCandyCandyLabel.place(relx=0.23, rely=0.77, anchor="center", width=75)
-
-
-
-
-    #Selecting an active pokemon
-    pokemonCenterActiveButton = tk.Button(pokemonCenterFrame, text="Select as Active", font="Helvatica 21", command=invoke_active)
-    pokemonCenterActiveButton.place(relx=0.775, rely=0.8, relwidth=0.125, anchor="ne", height=40) #Change the location of this to be correct
-
-    pokemonCenterActiveLabel = tk.Label(pokemonCenterFrame, text=playerData["active pokemon"], font="Helvetica 28", fg="yellow", bg="#2BA4D9")
-    pokemonCenterActiveLabel.place(relx=0.50, rely=0.60, anchor="center", width=75)
-
-    pokemonCenterActiveLabel = tk.Label(pokemonCenterFrame, text="Active Pokemon:", font="Helvetica 14", fg="yellow", bg="#2BA4D9")
-    pokemonCenterActiveLabel.place(relx=0.23, rely=0.77, anchor="center", width=75)
-    
-    #Add button glow
-
 
 
 
