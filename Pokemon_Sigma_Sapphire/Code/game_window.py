@@ -49,11 +49,13 @@ def run_game(playerData, all_player_data):
             toShow += f"Level: {pokemon[3]}\n"  # Level
             toShow += f"Combat Power: {pokemon[2]}\n"  # Combat Power
             toShow += "\n"  # blank line between pokemon!
-        print(toShow)
         pokemonCenterLister.insert("1.0", toShow)
         pokemonCenterLister.configure(state="disabled")  # done, so we can keep the player from editing it!
 
     def pokemonCenter_enter():
+        '''
+        Transition to enter the pokemon center
+        '''
         mainMapFrame.place_forget()
         pokemonCenterFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -61,10 +63,16 @@ def run_game(playerData, all_player_data):
 
 
     def pokemonCenter_leave():
+        '''
+        Transition to exit the pokemon center
+        '''
         pokemonCenterFrame.place_forget()
         mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
     def invoke_feeding():
+        '''
+        Called while in the pokemon cent
+        '''
         # this is its own function because we need to update the GUI as well as do the internal updates!
         game_functions.level_pokemon(pokemonCenterSelecterInput.get())
         pokemonCenterCandyCountLabel.configure(playerData["candies"])
@@ -203,9 +211,9 @@ def run_game(playerData, all_player_data):
     arenaButton.place(x=640, y=430, anchor="center", width=192, height=130)
 
     #pokemon center
-    pokemonCenterImage = tk.PhotoImage(file="../Images/pokemonCenter.png") #CHANGE THIS TO THE POKEMON CENTER IMAGE
+    pokemonCenterImage = tk.PhotoImage(file="../Images/pokemon_Center.png")
     pokemonCenterButton = tk.Button(mainMapFrame, image=pokemonCenterImage, activebackground="sky blue", relief="flat", command=pokemonCenter_enter)
-    pokemonCenterButton.place(x=580, y=250, anchor="center", width=192, height=130)
+    pokemonCenterButton.place(x=624, y=208, anchor="center", width=158, height=128)
 
     # safari
     safariButtonImage = tk.PhotoImage(file="../Images/safari_Truck.png")
