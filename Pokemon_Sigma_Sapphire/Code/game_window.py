@@ -116,6 +116,7 @@ def run_game(playerData, all_player_data):
 
                 if opponent_tuple[opponent][2]: # true if correct!
                     pokeList = file_IO.fetch_list("../PokeList_v3.csv", False)
+                    nonlocal playerData
                     newPokemon, playerData = game_functions.catch_pokemon(playerData,pokeList[random.randint(1, 150)])
                     candy_awarded = game_functions.award_candy(playerData)
 
