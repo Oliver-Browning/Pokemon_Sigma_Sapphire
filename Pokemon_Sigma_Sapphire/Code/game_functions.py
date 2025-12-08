@@ -18,19 +18,20 @@ def award_candy(current_player_data):
 
 #print(award_candy())
 
-import safari
+#import safari      #Delete this
 import file_IO
 import main_menu
-
+#                            73,Geodude,100,200
 def catch_pokemon(current_player_data, csvString):
     l = csvString.split(',')
 
     #current_player_data = #file_IO.fetch_json("../player_data/playerData.json")[main_menu.run_menu()]
-    pokemon = [l[0],l[1],random.randint( int(l[2]),int(l[3]))]
+              #pokedex index, Pokemon name, combat power, level
+    pokemon = [l[0],l[1],random.randint( int(l[2]),int(l[3])), 1]
     current_player_data["pokemon"] += [pokemon]
 
     print("Inside of game_functions. Current player data: ", current_player_data)
-    return pokemon
+    return pokemon, current_player_data
 
                     #Data of pokemon          
 def level_pokemon(selected_pokemon_data, candies_available, candies_to_feed):
@@ -60,6 +61,24 @@ def level_pokemon(selected_pokemon_data, candies_available, candies_to_feed):
     #Then update the element in selected pokemon data that contains the level
     #With the new or same level
 
+
+def save_player_data(current_player_data, all_player_data, candy_awarded = 0):
+
+    print(f"Inside of save_player_data() BEFORE MAKING CANDY CHANGES. The current player data is: {current_player_data}")
+
+    #Updating candies logic
+    previous_candy_count = current_player_data["candies"]
+    current_player_candies_updated = previous_candy_count + candy_awarded
+    current_player_data["candies"] = current_player_candies_updated
+    print(f"Inside of save_player_data() AFTER MAKING CANDY CHANGES. The current player data is: {current_player_data}")
+
+    current_player_name = current_player_data["name"]
+
+    print(f"Inside of save_player_data(). The current all_player_data is: {all_player_data}")
+    all_player_data[current_player_name] = current_player_data
+
+
+    file_IO.push_json(all_player_data)
 
 
 

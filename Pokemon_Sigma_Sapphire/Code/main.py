@@ -51,7 +51,7 @@ def main():
 
 
         #Run the game display function
-        game_window.run_game(current_player_data)
+        game_window.run_game(current_player_data, all_player_data)
     
 
 
