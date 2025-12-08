@@ -240,18 +240,11 @@ def run_game(playerData, all_player_data):
     safariButton.place(x=121, y=158, width=61, height=35, anchor="nw")
 
 
-
-    #Returning to main menu stuff
-    def arrow_exit_button():
-        main_menu.run_menu()
-        mainMapFrame.place_forget()
-        #Save player data now (although it should be already so maybe we dont need to do this?)
-
     #Return to main menu button
     stonePathMenuButtonImage = tk.PhotoImage(file="../Images/exit_arrow.png")
-    stonePathMenuButton = tk.Button(mainMapFrame, image=stonePathMenuButtonImage, relief="flat", command= arrow_exit_button)
-    stonePathMenuButton.place(x=400-(32/2), y=600-32, width=32, height=32, anchor="nw")
-    #Returning to main menu stuff
+    stonePathMenuButton = tk.Button(mainMapFrame, image=stonePathMenuButtonImage, bg="#685A5B", command=gameWindow.destroy)
+    stonePathMenuButton.place(x=384, y=564, width=32, height=32, anchor="nw")
+
 
     # ACTIVE POKEMON FUNCTION
     def invoke_active():
