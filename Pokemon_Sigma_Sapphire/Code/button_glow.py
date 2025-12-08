@@ -1,3 +1,15 @@
+# By submitting this assignment, I agree to the following:
+# "Aggies do not lie, cheat, or steal, or tolerate those who do."
+# "I have not given or received any unauthorized aid on this assignment."
+#
+# Names: Logan Stephens
+# Shreyaan Nath
+# Oliver Browning
+# Noam Amihai
+# Section: 209
+# Assignment: Team LAB 13: Part 1
+# Date: 8 December 2025
+
 # the following two functions handle changing the button color when hovered over!
 def button_on_enter(caller):
     '''
