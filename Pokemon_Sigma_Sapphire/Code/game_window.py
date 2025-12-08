@@ -182,6 +182,7 @@ def run_game(playerData, all_player_data):
     helpHouseEntryImage = tk.PhotoImage(file="../Images/tutorialHouseBackground.png")
     helpHouseCanvas.create_image(0, 0, image=helpHouseEntryImage, anchor="nw")
     helpHouseExitButton = tk.Button(helpHouseFrame, text="exit", font="Helvetica 21", command=tutorial_house_leave)
+    button_glow.bind_normal(helpHouseExitButton)
     helpHouseExitButton.place(relx=0.5, rely=0.9, anchor="center", height=40)
 
 
