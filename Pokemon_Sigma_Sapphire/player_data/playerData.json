@@ -21,14 +21,34 @@
     "Oliver": {
         "name": "Oliver",
         "level": 67,
-        "candies": 237,
-        "pokemon": []
+        "candies": 243,
+        "pokemon": [
+            [
+                "43",
+                "Gloom",
+                229,
+                1
+            ],
+            [
+                "65",
+                "Machop",
+                154,
+                1
+            ]
+        ]
     },
     "Logan": {
         "name": "Logan",
         "level": 1,
         "candies": 0,
-        "pokemon": []
+        "pokemon": [
+            [
+                "19",
+                "Rattata",
+                108,
+                1
+            ]
+        ]
     },
     "Shreyaan": {
         "name": "Shreyaan",

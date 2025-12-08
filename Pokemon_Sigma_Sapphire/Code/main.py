@@ -42,6 +42,10 @@ def main():
         else:   #For debugging
             print("main_menu.run_menu() has returned something invalid")
 
+        #player_data_file = "../player_data/playerData.json"
+        #all_player_data = file_IO.fetch_json(player_data_file)
+        #print(f"ALL PLAYER DATA: {all_player_data}")
+        game_functions.save_player_data(current_player_data, all_player_data)
 
 
         #Debug print statements
