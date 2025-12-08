@@ -71,6 +71,9 @@ def run_menu():
         savesButton.configure(state='normal')
         playerSelectedLabel.configure(text=("  Player: " + playerName + "  ")) # don't forget to show who's playing!
 
+        # update last played player
+        file_IO.push_json("../player_data/last_save_used.json", {"lastPlayed": player}, "w")
+
         # save change menu items
         p1Select.place_forget()
         p2Select.place_forget()
@@ -119,12 +122,25 @@ def run_menu():
                                          ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
 
     #Resets the selected player
-    def reset_player(player_name):
+    def reset_player(player_name, buttonID):
+
         blank_player_dict = {'name': player_name, 'level': 1, 'candies': 0, 'pokemon': []}
-        player_data_file = "../player_data/playerData.json"
-        all_player_data = file_IO.fetch_json(player_data_file)
-        #print(f"ALL PLAYER DATA: {all_player_data}")
+        players[player_name] = blank_player_dict
+        all_player_data = file_IO.fetch_json("../player_data/playerData.json")
         game_functions.save_player_data(blank_player_dict, all_player_data)
+
+        if buttonID == 1:
+            p1Label.configure(text=(playerNames[0] + ": Level " + str(players[playerNames[0]]["level"]) + ", Candies: "
+                                  + str(players[playerNames[0]]["candies"])))
+        elif buttonID == 2:
+            p2Label.configure(text=(playerNames[1] + ": Level " + str(players[playerNames[1]]["level"]) + ", Candies: "
+                                  + str(players[playerNames[1]]["candies"])))
+        elif buttonID == 3:
+            p3Label.configure(text=(playerNames[2] + ": Level " + str(players[playerNames[2]]["level"]) + ", Candies: "
+                                  + str(players[playerNames[2]]["candies"])))
+        else:
+            p4Label.configure(text=(playerNames[3] + ": Level " + str(players[playerNames[3]]["level"]) + ", Candies: "
+                                  + str(players[playerNames[3]]["candies"])))
 
 
 
@@ -135,10 +151,10 @@ def run_menu():
     p4Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things(playerNames[3]))
 
     #Player reset buttons
-    p1Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[0]))
-    p2Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[1]))
-    p3Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[2]))
-    p4Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[3]))
+    p1Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[0], 1))
+    p2Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[1], 2))
+    p3Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[2], 3))
+    p4Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21", command=lambda: reset_player(playerNames[3], 4))
 
 
     # generating the MAIN menu items
