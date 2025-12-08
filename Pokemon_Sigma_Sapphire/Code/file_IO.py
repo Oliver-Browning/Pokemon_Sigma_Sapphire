@@ -38,7 +38,8 @@ def push_list(file_path, line_list, mode="w"):
 
 def fetch_json(file_path):
     """
-    Words
+    Takes a string file path file_path as an argument.
+    Opens file and converts json data to a dictionary. Returns dictionary.
     """
     with open(file_path, "r") as file:
         dictionary = json.load(file)
@@ -47,7 +48,10 @@ def fetch_json(file_path):
 
 def push_json(file_path, dictionary, mode):
     """
-    Words
+    Takes a string file path file_path, a dictionary called dictionary,
+    and a string mode for the open mode. Opens/creates file and writes
+    the dictionary to the file in json format in the mode specified. For debugging,
+    prints relevant information if there was an error.
     """
     with open(file_path, mode="w") as file:
         try:

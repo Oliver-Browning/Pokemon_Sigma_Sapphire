@@ -39,10 +39,16 @@ def run_menu():
 
     # player selected - return with their name!
     def player_selected():
+        """
+        Hides the menu and returns the selected player's name
+        """
         menuWindow.destroy()
 
 
     def show_save_change_things():
+        """
+        Shows the save change menu items
+        """
         backCanvas.itemconfig(saveChangeBackgroundImage, state='normal')
         continueButton.configure(state='disabled')
         savesButton.configure(state='disabled')
@@ -63,6 +69,9 @@ def run_menu():
         p4Label.place(x=600, y=450, anchor="center")
 
     def hide_save_change_things(playerName):
+        """
+        Hides the save change menu items, and updates the selected player
+        """
         nonlocal player
         player = playerName
 
@@ -91,6 +100,9 @@ def run_menu():
 
 
     def quit_menu():
+        """
+        Quits the menu and returns False
+        """
         nonlocal player
         player = False
         menuWindow.destroy()
@@ -123,7 +135,9 @@ def run_menu():
 
     #Resets the selected player
     def reset_player(player_name, buttonID):
-
+        """
+        Resets the selected player's data to default values
+        """
         blank_player_dict = {'name': player_name, 'level': 1, 'candies': 0, 'pokemon': [], 'active pokemon': ''}
         players[player_name] = blank_player_dict
         all_player_data = file_IO.fetch_json("../player_data/playerData.json")

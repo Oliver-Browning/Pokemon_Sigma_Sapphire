@@ -37,6 +37,11 @@ game = {
 }
 
 def three_weirdos():
+    """
+    Returns a list of three tuples, each containing:
+    (person's name, their statement, whether they are telling the truth)
+    The first person in the list is always telling the truth and then it shuffles it.
+    """
 
     names = ["Okarin", "Mayushii", "Suzuha", "Faris Nyan", "Monika", "Yuri", "Sayori", "Daru", "Lelouch", "Shinei", "Light", "L", "Erwin Smith", "Eren", "Mikasa", "Levi", "Sans", "Papyrus", "Lucy", "David", "Maine", "Rebecca", "Adam Smasher", "Kiwi", "Ado"]
 
