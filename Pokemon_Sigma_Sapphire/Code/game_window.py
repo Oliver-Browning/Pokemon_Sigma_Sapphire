@@ -3,6 +3,7 @@ import file_IO
 import game_functions
 import safari
 import button_glow
+import skyblockPuzzle
 
 def run_game(playerData):
 
@@ -32,13 +33,57 @@ def run_game(playerData):
     # this function handles entering the safari!
 
     def safari_enter():
+        # switch frames
         mainMapFrame.place_forget()
         safariFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
+        # show the initial confrontation things!
+        confrontButton.place(relx=0.5, rely=0.8, anchor="center", height=40)
+        teamRocketBlocksLabel.place(relx=0.5, rely=0.1, anchor="n")
+
         safari.run_safari(playerData)
 
     def safari_leave():
+        # switch frames
         safariFrame.place_forget()
         mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
+
+    def safari_dialogs():
+        teamRocketBlocksLabel.place_forget()
+        confrontButton.place_forget()
+        safariCanvas.itemconfig(dialogBackground, state="normal")
+        safariCanvas.itemconfig(dialogBox, state="normal")
+
+        # get the dialogues:
+        opponent_tuple = skyblockPuzzle.three_weirdos()
+
+        curr_opponent_id = 0
+
+        opponentNameLabel.configure(text="Riddle us this!")
+        opponentNameLabel.place(x=50, y=360)
+        opponentRiddleLabel.configure(text="Prepare for trouble, and make it double! We'll give you three statements. Figure out who stole your reward, before we run away!", wraplength=700, justify="left")
+        opponentRiddleLabel.place(x=50, y=390)
+
+
+        def safari_dialogs_continued():
+            nonlocal curr_opponent_id
+            if curr_opponent_id < 4:
+                curr_opponent_id += 1
+                opponentNameLabel.configure(text=opponent_tuple[curr_opponent_id - 1][0])
+                opponentRiddleLabel.configure(text=opponent_tuple[curr_opponent_id - 1][1], wraplength=700, justify="left")
+            else:
+                dialogContinueButton.destroy()
+
+                # return to main safari screen
+                confrontButton.place(relx=0.5, rely=0.8, anchor="center", height=40)
+                teamRocketBlocksLabel.place(relx=0.5, rely=0.1, anchor="n")
+
+
+        dialogContinueButton = tk.Button(safariFrame, text="Continue", font="Helvetica 21", command=safari_dialogs_continued)
+        button_glow.bind_normal(dialogContinueButton)
+        dialogContinueButton.place(x=600, y=450, height=40)
+
 
 
 
@@ -88,10 +133,20 @@ def run_game(playerData):
     safariCanvas.create_image(0, 0, image=safariBackground, anchor="nw")
 
     teamRocketBlocksLabel = tk.Label(safariFrame, text="Team Rocket blocks the way!", font="Helvetica 21", fg="yellow", bg="brown", relief="raised")
-    teamRocketBlocksLabel.place(relx=0.5, rely=0.1, anchor="n")
+    # teamRocketBlocksLabel.place(relx=0.5, rely=0.1, anchor="n")
 
-    confrontButton = tk.Button(safariFrame, text="Confront!", font="Helvetica 21", command=safari_leave)
-    confrontButton.place(relx=0.5, rely=0.8, anchor="center", height=40)
+    dialogBackgroundImage = tk.PhotoImage(file="../Images/safariBackgroundDialouge.png")
+    dialogBackground = safariCanvas.create_image(0, 0, image=dialogBackgroundImage, anchor="nw")
+    safariCanvas.itemconfig(dialogBackground, state="hidden")
+
+    dialogBox = safariCanvas.create_rectangle(25, 350, 775, 500, fill="saddle brown", outline="yellow", width=6)
+    safariCanvas.itemconfig(dialogBox, state="hidden")
+
+    opponentNameLabel = tk.Label(safariFrame, text="", font="Helvetica 21", fg="yellow", bg="saddle brown")
+    opponentRiddleLabel = tk.Label(safariFrame, text="", font="Helvetica 14", fg="yellow", bg="saddle brown")
+
+    confrontButton = tk.Button(safariFrame, text="Confront!", font="Helvetica 21", command=safari_dialogs)
+    # confrontButton.place(relx=0.5, rely=0.8, anchor="center", height=40)
     button_glow.bind_normal(confrontButton)
 
 
