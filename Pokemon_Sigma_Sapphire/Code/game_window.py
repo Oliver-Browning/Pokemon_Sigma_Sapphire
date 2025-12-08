@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import scrolledtext
 import file_IO
 import game_functions
 import button_glow
@@ -12,13 +13,6 @@ def run_game(playerData, all_player_data):
     gameWindow.title("Pokemon Sigma Sapphire: " + playerData["name"])
     gameWindow.resizable(False, False)
     gameWindow.geometry("800x600")
-
-
-    # getting the current player data
-    currentLevel = playerData["level"]
-    currentCandies = playerData["candies"]
-    print(currentLevel)
-    print(currentCandies)
 
 
     # this function handles entering the tutorial house!
@@ -43,18 +37,39 @@ def run_game(playerData, all_player_data):
         mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
 
+    def update_pokemonCenterLister():
+        '''
+        generates what to show on pokemonCenterLister
+        '''
+        pokemonCenterLister.configure(state="normal")  # enable editing, since it's normally disabled
+        pokemonCenterLister.delete("1.0", tk.END)
+        toShow = ""
+        for pokemon in playerData["pokemon"]:
+            toShow += f"#{pokemon[0]}: {pokemon[1]}\n"  # ID and Name
+            toShow += f"Level: {pokemon[3]}\n"  # Level
+            toShow += f"Combat Power: {pokemon[2]}\n"  # Combat Power
+            toShow += "\n"  # blank line between pokemon!
+        print(toShow)
+        pokemonCenterLister.insert("1.0", toShow)
+        pokemonCenterLister.configure(state="disabled")  # done, so we can keep the player from editing it!
+
     def pokemonCenter_enter():
         mainMapFrame.place_forget()
         pokemonCenterFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
-    
+        update_pokemonCenterLister()
+
+
     def pokemonCenter_leave():
         pokemonCenterFrame.place_forget()
         mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
+    def invoke_feeding():
+        # this is its own function because we need to update the GUI as well as do the internal updates!
+        game_functions.level_pokemon(pokemonCenterSelecterInput.get())
+        pokemonCenterCandyCountLabel.configure(playerData["candies"])
 
-
-
+        update_pokemonCenterLister()
 
 
     def safari_enter():
@@ -213,7 +228,24 @@ def run_game(playerData, all_player_data):
     pokemonCenterEntryImage = tk.PhotoImage(file="../Images/pokemon_center_bg.png")
     pokemonCenterCanvas.create_image(0, 0, image=pokemonCenterEntryImage, anchor="nw")
     pokemonCenterExitButton = tk.Button(pokemonCenterFrame, text="exit", font="Helvetica 21", command=pokemonCenter_leave)
-    pokemonCenterExitButton.place(relx=0.5, rely=0.9, anchor="center", height=40)
+    button_glow.bind_normal(pokemonCenterExitButton)
+    pokemonCenterExitButton.place(relx=0.5, rely=0.9425, anchor="center", height=40)
+
+    pokemonCenterLister = scrolledtext.ScrolledText(pokemonCenterFrame, wrap=tk.WORD, font="Helvetica 14", fg="yellow", bg="#2BA4D9")
+    pokemonCenterLister.place(relx=0.5, rely=0.425, anchor="center", width=575, height=380)
+    pokemonCenterLister.configure(state="disabled") # done, so we can keep the player from editing it!
+
+
+    # feeding related stuff
+    pokemonCenterSelecterInput = tk.Entry(pokemonCenterFrame, font="Helvetica 21")
+    pokemonCenterSelecterInput.place(relx=0.5, rely=0.8, relwidth=0.4, anchor="center", height=40)
+    pokemonCenterFeedButton = tk.Button(pokemonCenterFrame, text="Feed", font="Helvatica 21", command=invoke_feeding)
+    pokemonCenterFeedButton.place(relx=0.775, rely=0.8, relwidth=0.125, anchor="center", height=40)
+    button_glow.bind_normal(pokemonCenterFeedButton)
+    pokemonCenterCandyCountLabel = tk.Label(pokemonCenterFrame, text=playerData["candies"], font="Helvetica 28", fg="yellow", bg="#2BA4D9")
+    pokemonCenterCandyCountLabel.place(relx=0.23, rely=0.82, anchor="center", width=75)
+    pokemonCenterCandyCandyLabel = tk.Label(pokemonCenterFrame, text="Candy:", font="Helvetica 14", fg="yellow", bg="#2BA4D9")
+    pokemonCenterCandyCandyLabel.place(relx=0.23, rely=0.77, anchor="center", width=75)
 
 
 
