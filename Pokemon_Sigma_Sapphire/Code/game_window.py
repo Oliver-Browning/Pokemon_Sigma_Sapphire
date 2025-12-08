@@ -9,6 +9,12 @@ import random
 import main_menu
 
 def run_game(playerData, all_player_data):
+    """
+    Takes in playerData (dict) and all_player_data (dict)
+    Launches and runs the main Sigma Sapphire game window.
+    This function initializes the Tkinter window, loads all map locations,
+    Creates UI frames (main map, arena, Pokemon Center, Instructions House, and the Safari)
+    """
 
     # the usual general setup
     gameWindow = tk.Tk()
@@ -19,10 +25,16 @@ def run_game(playerData, all_player_data):
 
     # this function handles entering the tutorial house!
     def tutorial_house_enter():
+        """
+        This function handles the user entering the instructions home page.
+        """
         mainMapFrame.place_forget()
         helpHouseFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
     def tutorial_house_leave():
+        """
+        This function handles the user leaving the instructions home page.
+        """
         helpHouseFrame.place_forget()
         mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -30,6 +42,9 @@ def run_game(playerData, all_player_data):
 
 
     def arena_enter():
+        """
+        This function handles the user entering the arena home page.
+        """
         mainMapFrame.place_forget()
         arenaFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -40,21 +55,34 @@ def run_game(playerData, all_player_data):
 
 
     def arena_leave():
+        """
+        This function handles the user leaving the arena home page.
+        """
         arenaFrame.place_forget()
         mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
     def fake_full_enter():
+        """
+        This function is called when you press the continue button in the arena.
+        It hides the arena background and takes you to a screen that says to buy 
+        the full version.
+        """
         arenaFrame.place_forget()
         fullVersionFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
     def fake_full_leave():
+        """
+        Hides the buy the full version screen and takes you back to the arena.
+        """
         fullVersionFrame.place_forget()
         arenaFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
 
     def update_pokemonCenterLister():
         '''
-        generates what to show on pokemonCenterLister
+        Updates the Pokemon list displayed inside the pokemon center.
+        This function rewrites the list of pokemon currently owned 
+        by the player, including their Pokedex ID, name, level, and combat Power
         '''
         pokemonCenterLister.configure(state="normal")  # enable editing, since it's normally disabled
         pokemonCenterLister.delete("1.0", tk.END)
@@ -69,7 +97,9 @@ def run_game(playerData, all_player_data):
 
     def pokemonCenter_enter():
         '''
-        Transition to enter the pokemon center
+        Handles transition into the pokemon center.
+        It hides the main map frame and displays the Pokemon Center frame.
+        It then refreshes the Pokemon list and candy count for the player.
         '''
         mainMapFrame.place_forget()
         pokemonCenterFrame.place(x=0, y=0, relwidth=1, relheight=1)
@@ -83,14 +113,19 @@ def run_game(playerData, all_player_data):
 
     def pokemonCenter_leave():
         '''
-        Transition to exit the pokemon center
+        Handles the transition out of the Pokemon center.
+        Hides the Pokemon Center frame and returns the player to the main map.
         '''
         pokemonCenterFrame.place_forget()
         mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
     def invoke_feeding():
         '''
-        Called while in the pokemon cent
+        Feeds candies to a selected pokemon to increase its level.
+        This function reads the user's input from the selection box, 
+        calls the leveling function, updates the player's candy count 
+        on screen, and then refreshes the pokemon list display to
+        reflect the new stats.
         '''
         # this is its own function because we need to update the GUI as well as do the internal updates!
         game_functions.level_pokemon(pokemonCenterSelector.get(),playerData)
@@ -100,7 +135,12 @@ def run_game(playerData, all_player_data):
 
 
     def safari_enter():
-        # switch frames
+        """
+        Handles the transition into the Safari map.
+        Hides the main map frame and displays the safari frame. 
+        This initializes the encounter by placing the confrontation 
+        button and introductory text.
+        """
         mainMapFrame.place_forget()
         safariFrame.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -112,6 +152,14 @@ def run_game(playerData, all_player_data):
 
 
     def safari_dialogs():
+        """
+        Begins the safari dialogue sequence with Team Rocket.
+        This function displays the dialog UI elements, 
+        retrieves the three-riddle encounter from skyblockPuzzle, 
+        and cycles through each statement. After the dialogue, 
+        the function presents the player with three suspects to choose from.
+        """
+
         teamRocketBlocksLabel.place_forget()
         confrontButton.place_forget()
         safariCanvas.itemconfig(dialogBackground, state="normal")
@@ -129,6 +177,12 @@ def run_game(playerData, all_player_data):
 
 
         def safari_dialogs_continued():
+            """
+            This function continues the dialogue sequence for the Safari game, 
+            where it displays each of the three riddle statements one at a time. 
+            After the final statement, it hides the dialogue box and displays 
+            three selectable opponent buttons for the player to choose from.
+            """
             nonlocal curr_opponent_id
             if curr_opponent_id < 3:
                 opponentNameLabel.configure(text=opponent_tuple[curr_opponent_id][0])
@@ -154,13 +208,31 @@ def run_game(playerData, all_player_data):
                 button_glow.bind_normal(choice3Button)
 
             def select_opponent(opponent):
-                # hide the buttons
+                """
+                Takes in an integer of either 0, 1, or 2 for which 
+                opponent was selected. Is called by the choice 
+                buttons next to each of the 3 opponents in the minigame. 
+                Removes all of the opponent choice buttons from the 
+                screen. Defines the safari_leave() function, and 
+                sets up the win/lose dialogue box. Makes a continue 
+                button that calls safari_leave(). Checks to see if the 
+                player won the game, and if so, reward the player with 
+                a new pokemon and candy, and display the win dialogue. 
+                If they didn't win, display the lose dialogue. Returns nothing.
+                """
                 choice1Button.destroy()
                 choice2Button.destroy()
                 choice3Button.destroy()
 
 
                 def safari_leave():
+                    """
+                    Takes in no arguments. It is called when you click 
+                    the continue button after playing the minigame. 
+                    Removes and hides all safari related things like the 
+                    opponents and their dialogue. It hides the safari 
+                    window and shows the main town area. Returns nothing.
+                    """
                     # first, hide the stuff for the next time we get here
                     exitDialogButton.destroy()
                     safariCanvas.itemconfig(dialogBackground, state="hidden")
@@ -249,7 +321,12 @@ def run_game(playerData, all_player_data):
     # ACTIVE POKEMON FUNCTION
     def invoke_active():
         """
-        Docstring for invoke_active
+        Takes in no arguments. It is called when you press the select 
+        active pokemon button. It runs the active_pokemon function 
+        and passes it the name of the pokemon that the user selected 
+        in the user interface, as well as the player data. It then 
+        configures the label to display the name of the active pokemon. 
+        Returns nothing.
         """
 
         game_functions.active_pokemon(arenaSelector.get(), playerData)

@@ -4,8 +4,12 @@ player_data_file = "../player_data/playerData.json"
 
 def award_candy(current_player_data):
     """
-    Generates a weighted random integer
-    either 3, 5, or 10 and returns it. 
+    Takes in current_player_data (dict) as an argument and returns 
+    the number of candies (int) awarded. Awards the player a random 
+    amount of candy based on weighted probabilities. This function 
+    selects a random candy value from 3, 5, 10, using a weighted 
+    distribution of 50, 40 or 10 percent respectively. The selected 
+    amount of candies is then added directly to the player's candies field.
     """
     candy_amounts = [3, 5, 10]
     rand_int = random.randint(0,2)
@@ -25,6 +29,15 @@ import file_IO
 import main_menu
 #                            73,Geodude,100,200
 def catch_pokemon(current_player_data, csvString):
+    """
+    Takes in current_player_data (dict) and csvString (str) and 
+    returns a tuple of newly created pokemon (list) and the 
+    updated current_player_data object (dict). Generates a new 
+    Pokemon from a CSV string and adds it to the player's party.
+    This function randomly selects a combat power with the 
+    given range and assigns the Pokemon by default to level 1. 
+    It then appends it to the current_player_data[“pokemon”]
+    """
     l = csvString.split(',')
 
     #current_player_data = #file_IO.fetch_json("../player_data/playerData.json")[main_menu.run_menu()]
@@ -37,6 +50,16 @@ def catch_pokemon(current_player_data, csvString):
 
                 #ONLY GIVEN POKEMON NAME           
 def level_pokemon(pokemon_name, player_data):
+    """
+    Takes in the pokemon_name (str) and player_data (dict). Doesn't return anything.
+    Levels up the pokemon using the player's available candies.
+    This function searches the player's Pokemon list for the 
+    Pokemon whose pokemon_name matches any element within a pokemon entry. 
+    The leveling rules are: Levels 1-30: cost is 1 candy, Levels 31-40 cost is 2 candies.
+    If the player has sufficient candies, the Pokemon's level is increased by 1, 
+    candies are deducted and the modified player data is saved to disk. 
+    This function updates both RAM and the persistent JSON file.
+    """
     candies_available = player_data["candies"]
 
     #parse through data and pull out the current level
@@ -93,6 +116,14 @@ def level_pokemon(pokemon_name, player_data):
 
 
 def save_player_data(current_player_data, all_player_data, candy_awarded = 0):
+    """
+    Takes in current_player_data (dict), all_player_data (dict), 
+    and the candy_awarded (int) and returns nothing
+    Saves updated player data to the playerData.json file.
+    This function optionally adds candy (candy_awarded) to the 
+    player's existing candy total, updating the master player 
+    dictionary and writes the modified data to the disk.
+    """
     #all_player_data = all_player_data[:]
 
     print(f"Inside of save_player_data() BEFORE MAKING CANDY CHANGES. The current player data is: {current_player_data}")
@@ -116,7 +147,12 @@ def save_player_data(current_player_data, all_player_data, candy_awarded = 0):
 
 def active_pokemon(pokemon_name, player_data):
     """
-    Docstring for active_pokemon
+    Takes in the pokemon_name (str) and pokemon_data (dict) and returns nothing
+    Sets one of the player's Pokemon to be the active/selected pokemon
+    This function locates the Pokemon whose entry contains 
+    pokemon_name and assigns it to the active pokemon 
+    field within player_data and writes the updated data back to disk.
+
     """
     print(f"Inside active_pokemon() in game_functions. pokemon_name: {pokemon_name}")
     print(f"Inside active_pokemon() in game_functions BEFORE CODE. player_data: {player_data}")
