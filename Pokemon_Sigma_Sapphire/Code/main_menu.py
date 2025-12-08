@@ -114,24 +114,24 @@ def run_menu():
     for name in players:
         playerNames.append(name)
     p1Label = tk.Label(menuWindow, text=(
-                                         playerNames[0] + ": Level " + str(players[playerNames[0]]["level"])
-                                         + ", Candies: " + str(players[playerNames[0]]["candies"])
-                                         ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
+                                         playerNames[0] + ": " + str(len(players[playerNames[0]]["pokemon"]))
+                                         + " Pokemon, " + str(players[playerNames[0]]["candies"]) + " Candies"),
+                       font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
 
     p2Label = tk.Label(menuWindow, text=(
-                                         playerNames[1] + ": Level " + str(players[playerNames[1]]["level"])
-                                         + ", Candies: " + str(players[playerNames[1]]["candies"])
-                                         ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
+                                         playerNames[1] + ": " + str(len(players[playerNames[1]]["pokemon"]))
+                                         + " Pokemon, " + str(players[playerNames[1]]["candies"]) + " Candies"),
+                       font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
 
     p3Label = tk.Label(menuWindow, text=(
-                                         playerNames[2] + ": Level " + str(players[playerNames[2]]["level"])
-                                         + ", Candies: " + str(players[playerNames[2]]["candies"])
-                                         ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
+                                         playerNames[2] + ": " + str(len(players[playerNames[2]]["pokemon"]))
+                                         + " Pokemon, " + str(players[playerNames[2]]["candies"]) + " Candies"),
+                       font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
 
     p4Label = tk.Label(menuWindow, text=(
-                                         playerNames[3] + ": Level " + str(players[playerNames[3]]["level"])
-                                         + ", Candies: " + str(players[playerNames[3]]["candies"])
-                                         ), font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
+                                         playerNames[3] + ": " + str(len(players[playerNames[3]]["pokemon"]))
+                                         + " Pokemon, " + str(players[playerNames[3]]["candies"]) + " Candies"),
+                       font="Ariel 13 bold", fg="yellow", bg="#2BA4D9")
 
     #Resets the selected player
     def reset_player(player_name, buttonID):
@@ -144,17 +144,17 @@ def run_menu():
         game_functions.save_player_data(blank_player_dict, all_player_data)
 
         if buttonID == 1:
-            p1Label.configure(text=(playerNames[0] + ": Level " + str(players[playerNames[0]]["level"]) + ", Candies: "
-                                  + str(players[playerNames[0]]["candies"])))
+            p1Label.configure(text=(playerNames[0] + ": " + str(len(players[playerNames[0]]["pokemon"]))
+                                    + " Pokemon, " + str(players[playerNames[0]]["candies"]) + " Candies"))
         elif buttonID == 2:
-            p2Label.configure(text=(playerNames[1] + ": Level " + str(players[playerNames[1]]["level"]) + ", Candies: "
-                                  + str(players[playerNames[1]]["candies"])))
+            p2Label.configure(text=(playerNames[1] + ": " + str(len(players[playerNames[1]]["pokemon"]))
+                                    + " Pokemon, " + str(players[playerNames[1]]["candies"]) + " Candies"))
         elif buttonID == 3:
-            p3Label.configure(text=(playerNames[2] + ": Level " + str(players[playerNames[2]]["level"]) + ", Candies: "
-                                  + str(players[playerNames[2]]["candies"])))
+            p3Label.configure(text=(playerNames[2] + ": " + str(len(players[playerNames[2]]["pokemon"]))
+                                    + " Pokemon, " + str(players[playerNames[2]]["candies"]) + " Candies"))
         else:
-            p4Label.configure(text=(playerNames[3] + ": Level " + str(players[playerNames[3]]["level"]) + ", Candies: "
-                                  + str(players[playerNames[3]]["candies"])))
+            p4Label.configure(text=(playerNames[3] + ": " + str(len(players[playerNames[3]]["pokemon"]))
+                                    + " Pokemon, " + str(players[playerNames[3]]["candies"]) + " Candies"))
 
 
 
