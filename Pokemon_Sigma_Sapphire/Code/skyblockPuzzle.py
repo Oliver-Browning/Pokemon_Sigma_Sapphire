@@ -5,34 +5,34 @@ import random
 #Update other diualogue accordingly instead of something being in a chest, 
 game = {
     1: {
-        1: "The reward is not in my chest!",
+        1: "I did not steal the Pokemon!",
         2: "One of us is telling the truth!",
-        3: "They are both telling the truth. The reward isn't in {p1}'s chest."
+        3: "They are both telling the truth. {p1} did not steal the Pokemon."
     },
     2: {
-        1: "The reward isn't in any of our chests.",
-        2: "The reward is not in my chest. They are both lying.",
-        3: "The reward is in my chest!"
+        1: "None of us stole the Pokemon.",
+        2: "I did not steal the Pokemon. They are both lying.",
+        3: "I stole the Pokemon"
     },
     3: {
-        1: "My chest doesn't have the reward. We are all telling the truth.",
-        2: "My chest doesn't have the reward. At least one of the others is telling the truth!",
+        1: "I did not steal the Pokemon. We are all telling the truth.",
+        2: "I did not steal the Pokemon. At least one of the others is telling the truth!",
         3: "One of the others is lying!"
     },
     4: {
-        1: "My chest has the reward and I'm telling the truth!",
-        2: "They are both lying, the reward is in my chest!",
-        3: "They are both telling the truth, the reward is in {p2}'s chest!"
+        1: "I stole the Pokemon and I'm telling the truth!",
+        2: "They are both lying, I stole the pokemon!",
+        3: "They are both telling the truth, {p2} stole the Pokemon!"
     },
     5: {
-        1: "At least one of them is lying, and the reward is not in {p3}'s chest!",
+        1: "At least one of them is lying, and {p3} did not steal the Pokemon!",
         2: "We are all telling the truth!",
-        3: "{p2} is telling the truth and the reward is in his chest."
+        3: "{p2} is telling the truth and they stole the Pokemon."
     },
     6: {
-        1: "Both of them are telling the truth. Also, {p2} has the reward in their chest!",
+        1: "Both of them are telling the truth. Also, {p2} stole the Pokemon!",
         2: "{p3} is telling the truth.",
-        3: "My chest has the reward!"
+        3: "I stole the Pokemon!"
     }
 }
 
