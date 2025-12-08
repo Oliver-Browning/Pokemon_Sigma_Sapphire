@@ -120,6 +120,9 @@ def run_game(playerData, all_player_data):
         pokeNameList = [pokemon[1] for pokemon in playerData["pokemon"]]
         pokemonCenterSelector.configure(values=pokeNameList)
 
+        # updating the candy count to be accurate!
+        pokemonCenterCandyCountLabel.configure(text=str(playerData["candies"]))
+
         update_pokemonCenterLister()
 
 
