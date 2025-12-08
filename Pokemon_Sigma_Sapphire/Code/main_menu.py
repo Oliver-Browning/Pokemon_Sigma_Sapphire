@@ -1,5 +1,6 @@
 import tkinter as tk
 import file_IO
+import button_glow
 import os
 
 def run_menu():
@@ -8,7 +9,7 @@ def run_menu():
     It returns the selected player's name, or if "Quit" is pressed, boolean False.
     '''
 
-    os.system('start ../Audio/"Pokemon Theme (8 Bit Raxlen Slice Chiptune Remix) [DeTJQf57wwQ].mp3"')
+    # os.system('start ../Audio/"Pokemon Theme (8 Bit Raxlen Slice Chiptune Remix) [DeTJQf57wwQ].mp3"')
 
     # get the last played player - that will be the default
     player = file_IO.fetch_json("../player_data/last_save_used.json")["lastPlayed"]
@@ -85,16 +86,12 @@ def run_menu():
         p4Label.place_forget()
 
 
-    # the following two functions handle changing the button color when hovered over!
-    def button_on_enter(caller):
-        caller.widget['background'] = 'sky blue'
 
-    def button_on_leave(caller):
-        caller.widget['background'] = 'SystemButtonFace'
-
-    # the following handles making the reset butons red when hovered over!
-    def reset_on_enter(caller):
-        caller.widget['background'] = 'OrangeRed'
+    def reset_save_file(playerName):
+        nonlocal players
+        players[playerName]["level"] = 1
+        players[playerName]["candies"] = 0
+        players[playerName]["pokemon"] = []
 
 
     def quit_menu():
@@ -156,39 +153,19 @@ def run_menu():
 
 
     # setting color binding!
+    button_glow.bind_normal(continueButton)
+    button_glow.bind_normal(savesButton)
+    button_glow.bind_red(quitButton)
 
-    continueButton.bind("<Enter>", button_on_enter)
-    continueButton.bind("<Leave>", button_on_leave)
+    button_glow.bind_normal(p1Select)
+    button_glow.bind_normal(p2Select)
+    button_glow.bind_normal(p3Select)
+    button_glow.bind_normal(p4Select)
 
-    savesButton.bind("<Enter>", button_on_enter)
-    savesButton.bind("<Leave>", button_on_leave)
-
-    quitButton.bind("<Enter>", reset_on_enter)
-    quitButton.bind("<Leave>", button_on_leave)
-
-    p1Select.bind("<Enter>", button_on_enter)
-    p1Select.bind("<Leave>", button_on_leave)
-
-    p2Select.bind("<Enter>", button_on_enter)
-    p2Select.bind("<Leave>", button_on_leave)
-
-    p3Select.bind("<Enter>", button_on_enter)
-    p3Select.bind("<Leave>", button_on_leave)
-
-    p4Select.bind("<Enter>", button_on_enter)
-    p4Select.bind("<Leave>", button_on_leave)
-
-    p1Reset.bind("<Enter>", reset_on_enter)
-    p1Reset.bind("<Leave>", button_on_leave)
-
-    p2Reset.bind("<Enter>", reset_on_enter)
-    p2Reset.bind("<Leave>", button_on_leave)
-
-    p3Reset.bind("<Enter>", reset_on_enter)
-    p3Reset.bind("<Leave>", button_on_leave)
-
-    p4Reset.bind("<Enter>", reset_on_enter)
-    p4Reset.bind("<Leave>", button_on_leave)
+    button_glow.bind_red(p1Reset)
+    button_glow.bind_red(p2Reset)
+    button_glow.bind_red(p3Reset)
+    button_glow.bind_red(p4Reset)
 
 
 
