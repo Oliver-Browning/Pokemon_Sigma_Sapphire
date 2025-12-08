@@ -43,7 +43,7 @@ def three_weirdos():
     The first person in the list is always telling the truth and then it shuffles it.
     """
 
-    names = ["Okarin", "Mayushii", "Suzuha", "Faris Nyan", "Monika", "Yuri", "Sayori", "Daru", "Lelouch", "Shinei", "Light", "L", "Erwin Smith", "Eren", "Mikasa", "Levi", "Sans", "Papyrus", "Lucy", "David", "Maine", "Rebecca", "Adam Smasher", "Kiwi", "Ado"]
+    names = ["Okarin", "Mayushii", "Suzuha", "Faris Nyan", "Monika", "Yuri", "Sayori", "Daru", "Lelouch", "Shinei", "Light", "Detective L.", "Erwin Smith", "Eren", "Mikasa", "Levi", "Sans", "Papyrus", "Lucy", "David", "Maine", "Rebecca", "Adam Smasher", "Kiwi", "Ado"]
 
     chosen = random.sample(names, 3)
 
