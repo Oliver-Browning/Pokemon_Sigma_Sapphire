@@ -36,8 +36,8 @@ def main():
 
             #Check if the player has any pokemon, and if not, they are assigned a random pokemon
             if len(current_player_data["pokemon"]) == 0:
-                poke_list_1 = file_IO.fetch_list("../PokeList_v3.csv", False)
-                game_functions.catch_pokemon(current_player_data, poke_list_1[random.randint(1,150)])
+                #poke_list_1 = file_IO.fetch_list("../PokeList_v3.csv", False)
+                game_functions.catch_pokemon(current_player_data, poke_list[random.randint(1,150)])
 
         else:   #For debugging
             print("main_menu.run_menu() has returned something invalid")

@@ -1,5 +1,8 @@
 import random
 
+
+#Note for future Oliver or current Logan, change the dialogue from the reward isnt in my chest to: Im not the one who stole the pokemon
+#Update other diualogue accordingly instead of something being in a chest, 
 game = {
     1: {
         1: "The reward is not in my chest!",
