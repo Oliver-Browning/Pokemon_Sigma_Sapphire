@@ -32,6 +32,31 @@ def run_game(playerData, all_player_data):
 
     # this function handles entering the safari!
 
+
+    def arena_enter():
+        mainMapFrame.place_forget()
+        arenaFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
+
+    def arena_leave():
+        arenaFrame.place_forget()
+        mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
+
+    def pokemonCenter_enter():
+        mainMapFrame.place_forget()
+        pokemonCenterFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
+    
+    def pokemonCenter_leave():
+        pokemonCenterFrame.place_forget()
+        mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
+
+
+
+
+
     def safari_enter():
         # switch frames
         mainMapFrame.place_forget()
@@ -144,12 +169,6 @@ def run_game(playerData, all_player_data):
 
 
 
-
-
-
-
-
-
     ##### generating the main map frame
     mainMapFrame = tk.Frame(gameWindow)
     mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
@@ -165,13 +184,37 @@ def run_game(playerData, all_player_data):
 
     # arena
     arenaImage = tk.PhotoImage(file="../Images/Arena.png")
-    arenaButton = tk.Button(mainMapFrame, image=arenaImage, activebackground="sky blue", relief="flat")
+    arenaButton = tk.Button(mainMapFrame, image=arenaImage, activebackground="sky blue", relief="flat", command=arena_enter)
     arenaButton.place(x=640, y=430, anchor="center", width=192, height=130)
+
+    #pokemon center
+    pokemonCenterImage = tk.PhotoImage(file="../Images/pokemonCenter.png") #CHANGE THIS TO THE POKEMON CENTER IMAGE
+    pokemonCenterButton = tk.Button(mainMapFrame, image=pokemonCenterImage, activebackground="sky blue", relief="flat", command=pokemonCenter_enter)
+    pokemonCenterButton.place(x=580, y=250, anchor="center", width=192, height=130)
 
     # safari
     safariButtonImage = tk.PhotoImage(file="../Images/safari_Truck.png")
     safariButton = tk.Button(mainMapFrame, image=safariButtonImage, relief="flat", command=safari_enter)
     safariButton.place(x=121, y=158, width=61, height=35, anchor="nw")
+
+    #Generating the arena frame
+    arenaFrame = tk.Frame(gameWindow)
+    arenaCanvas = tk.Canvas(arenaFrame, width=800, height=600)
+    arenaCanvas.pack(fill="both", expand=True)
+    arenaEntryImage = tk.PhotoImage(file="../Images/arena_bg.png")
+    arenaCanvas.create_image(0, 0, image=arenaEntryImage, anchor="nw")
+    arenaExitButton = tk.Button(arenaFrame, text="exit", font="Helvetica 21", command=arena_leave)
+    arenaExitButton.place(relx=0.5, rely=0.9, anchor="center", height=40)
+
+    #Generating pokemon center frame
+    pokemonCenterFrame = tk.Frame(gameWindow) #pokemonCenter
+    pokemonCenterCanvas = tk.Canvas(pokemonCenterFrame, width=800, height=600)
+    pokemonCenterCanvas.pack(fill="both", expand=True)
+    pokemonCenterEntryImage = tk.PhotoImage(file="../Images/pokemon_center_bg.png")
+    pokemonCenterCanvas.create_image(0, 0, image=pokemonCenterEntryImage, anchor="nw")
+    pokemonCenterExitButton = tk.Button(pokemonCenterFrame, text="exit", font="Helvetica 21", command=pokemonCenter_leave)
+    pokemonCenterExitButton.place(relx=0.5, rely=0.9, anchor="center", height=40)
+
 
 
     ##### generating the tutorial house frame
