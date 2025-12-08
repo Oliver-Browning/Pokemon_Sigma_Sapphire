@@ -51,7 +51,8 @@ def level_pokemon(pokemon_name, player_data):
         if pokemon_name in value:
             where_is_my_pokemon = index
     
-    current_level = selected_pokemon_data["pokemon"][where_is_my_pokemon][3]
+    #current_level = selected_pokemon_data["pokemon"][where_is_my_pokemon][3]
+    current_level = player_data["pokemon"][where_is_my_pokemon][3]
 
     #Determine how many candies are needed to feed the pokemon
     level_up = False

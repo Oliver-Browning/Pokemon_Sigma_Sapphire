@@ -74,7 +74,7 @@ def run_game(playerData, all_player_data):
         Called while in the pokemon cent
         '''
         # this is its own function because we need to update the GUI as well as do the internal updates!
-        game_functions.level_pokemon(pokemonCenterSelecterInput.get())
+        game_functions.level_pokemon(pokemonCenterSelecterInput.get(),playerData)
         pokemonCenterCandyCountLabel.configure(playerData["candies"])
 
         update_pokemonCenterLister()
