@@ -127,10 +127,10 @@ def run_menu():
 
 
     # buttons for manipulating
-    p1Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Noam"))
-    p2Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Oliver"))
-    p3Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Logan"))
-    p4Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things("Shreyaan"))
+    p1Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things(playerNames[0]))
+    p2Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things(playerNames[1]))
+    p3Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things(playerNames[2]))
+    p4Select = tk.Button(menuWindow, text="Select", font="Helvetica 21", command= lambda: hide_save_change_things(playerNames[3]))
     p1Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
     p2Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
     p3Reset = tk.Button(menuWindow, text="Reset", font="Helvetica 21")
