@@ -3,68 +3,40 @@
         "name": "Noam",
         "level": 1,
         "candies": 0,
-        "pokemon": []
+        "pokemon": [],
+        "active pokemon": ""
     },
     "Oliver": {
         "name": "Oliver",
         "level": 1,
-        "candies": 16,
+        "candies": 0,
         "pokemon": [
             [
-                "57",
-                "Growlithe",
-                290,
-                5
-            ],
-            [
-                "13",
-                "Weedle",
-                169,
-                19
-            ],
-            [
-                "16",
-                "Pidgey",
-                170,
-                1
-            ],
-            [
-                "38",
-                "Jigglypuff",
-                197,
-                1
-            ],
-            [
-                "125",
-                "Magmar",
-                231,
-                1
-            ],
-            [
-                "73",
-                "Geodude",
-                185,
+                "33",
+                "Nidoking",
+                346,
                 1
             ]
+        ],
+        "active pokemon": [
+            "33",
+            "Nidoking",
+            346,
+            1
         ]
     },
     "Logan": {
         "name": "Logan",
         "level": 1,
         "candies": 0,
-        "pokemon": []
+        "pokemon": [],
+        "active pokemon": ""
     },
     "Shreyaan": {
         "name": "Shreyaan",
         "level": 1,
         "candies": 0,
-        "pokemon": [
-            [
-                "130",
-                "Lapras",
-                259,
-                1
-            ]
-        ]
+        "pokemon": [],
+        "active pokemon": ""
     }
 }

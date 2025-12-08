@@ -89,6 +89,9 @@ def level_pokemon(pokemon_name, player_data):
     #With the new or same level
 
 
+
+
+
 def save_player_data(current_player_data, all_player_data, candy_awarded = 0):
     #all_player_data = all_player_data[:]
 
@@ -111,3 +114,32 @@ def save_player_data(current_player_data, all_player_data, candy_awarded = 0):
 
 
 
+def active_pokemon(pokemon_name, player_data):
+    """
+    Docstring for active_pokemon
+    """
+    print(f"Inside active_pokemon() in game_functions. pokemon_name: {pokemon_name}")
+    print(f"Inside active_pokemon() in game_functions BEFORE CODE. player_data: {player_data}")
+
+    selected_pokemon_data = player_data["pokemon"]
+    where_is_my_pokemon = 0
+
+    for index, value in enumerate(selected_pokemon_data):
+        if pokemon_name in value:
+            where_is_my_pokemon = index
+
+
+    active_pokemon = player_data["pokemon"][where_is_my_pokemon] #Finds the pokemon matching the name and sets it to be active
+    player_data["active pokemon"] = active_pokemon  #Assign the attribute active pokemon to the active pokemon
+    
+
+
+    all_player_data = file_IO.fetch_json(player_data_file)
+
+    print(f"Inside active_pokemon() in game_functions AFTER CODE. player_data: {player_data}")
+
+    save_player_data(player_data, all_player_data)
+
+    print(f"Inside active_pokemon() in game_functions. active_pokemon: {active_pokemon}")
+
+    

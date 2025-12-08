@@ -124,7 +124,7 @@ def run_menu():
     #Resets the selected player
     def reset_player(player_name, buttonID):
 
-        blank_player_dict = {'name': player_name, 'level': 1, 'candies': 0, 'pokemon': []}
+        blank_player_dict = {'name': player_name, 'level': 1, 'candies': 0, 'pokemon': [], 'active pokemon': ''}
         players[player_name] = blank_player_dict
         all_player_data = file_IO.fetch_json("../player_data/playerData.json")
         game_functions.save_player_data(blank_player_dict, all_player_data)

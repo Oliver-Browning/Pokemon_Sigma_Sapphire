@@ -261,16 +261,52 @@ def run_game(playerData, all_player_data):
     pokemonCenterLister.configure(state="disabled") # done, so we can keep the player from editing it!
 
 
+
+    #ACTIVE POKEMON FUNCTION
+    def invoke_active():
+        """
+        Docstring for invoke_active
+        """
+
+        game_functions.active_pokemon(pokemonCenterSelecterInput.get(),playerData)
+
+        pokemonCenterActiveLabel.configure(text = str(playerData["active pokemon"][1]))
+
+        #update_pokemonCenterLister() We might not need to actually do this here or at all for the active pokemon function
+
+
     # feeding related stuff
+    #Text box
     pokemonCenterSelecterInput = tk.Entry(pokemonCenterFrame, font="Helvetica 21")
     pokemonCenterSelecterInput.place(relx=0.5, rely=0.8, relwidth=0.4, anchor="center", height=40)
+
+    #Feed Button
     pokemonCenterFeedButton = tk.Button(pokemonCenterFrame, text="Feed", font="Helvatica 21", command=invoke_feeding)
     pokemonCenterFeedButton.place(relx=0.775, rely=0.8, relwidth=0.125, anchor="center", height=40)
     button_glow.bind_normal(pokemonCenterFeedButton)
+
+    #Candy count label with actual count
     pokemonCenterCandyCountLabel = tk.Label(pokemonCenterFrame, text=playerData["candies"], font="Helvetica 28", fg="yellow", bg="#2BA4D9")
     pokemonCenterCandyCountLabel.place(relx=0.23, rely=0.82, anchor="center", width=75)
+    
     pokemonCenterCandyCandyLabel = tk.Label(pokemonCenterFrame, text="Candy:", font="Helvetica 14", fg="yellow", bg="#2BA4D9")
     pokemonCenterCandyCandyLabel.place(relx=0.23, rely=0.77, anchor="center", width=75)
+
+
+
+
+    #Selecting an active pokemon
+    pokemonCenterActiveButton = tk.Button(pokemonCenterFrame, text="Select as Active", font="Helvatica 21", command=invoke_active)
+    pokemonCenterActiveButton.place(relx=0.775, rely=0.8, relwidth=0.125, anchor="ne", height=40) #Change the location of this to be correct
+
+    pokemonCenterActiveLabel = tk.Label(pokemonCenterFrame, text=playerData["active pokemon"], font="Helvetica 28", fg="yellow", bg="#2BA4D9")
+    pokemonCenterActiveLabel.place(relx=0.50, rely=0.60, anchor="center", width=75)
+
+    pokemonCenterActiveLabel = tk.Label(pokemonCenterFrame, text="Active Pokemon:", font="Helvetica 14", fg="yellow", bg="#2BA4D9")
+    pokemonCenterActiveLabel.place(relx=0.23, rely=0.77, anchor="center", width=75)
+    
+    #Add button glow
+
 
 
 
