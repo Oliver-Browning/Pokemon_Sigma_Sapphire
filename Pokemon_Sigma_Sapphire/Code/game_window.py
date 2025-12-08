@@ -5,6 +5,7 @@ import game_functions
 import button_glow
 import skyblockPuzzle
 import random
+import main_menu
 
 def run_game(playerData, all_player_data):
 
@@ -219,6 +220,22 @@ def run_game(playerData, all_player_data):
     safariButtonImage = tk.PhotoImage(file="../Images/safari_Truck.png")
     safariButton = tk.Button(mainMapFrame, image=safariButtonImage, relief="flat", command=safari_enter)
     safariButton.place(x=121, y=158, width=61, height=35, anchor="nw")
+
+
+
+    #Returning to main menu stuff
+    def arrow_exit_button():
+        main_menu.run_menu()
+        mainMapFrame.place_forget()
+        #Save player data now (although it should be already so maybe we dont need to do this?)
+
+    #Return to main menu button
+    stonePathMenuButtonImage = tk.PhotoImage(file="../Images/exit_arrow.png")
+    stonePathMenuButton = tk.Button(mainMapFrame, image=stonePathMenuButtonImage, relief="flat", command= arrow_exit_button)
+    stonePathMenuButton.place(x=400-(32/2), y=600-32, width=32, height=32, anchor="nw")
+    #Returning to main menu stuff
+
+
 
     #Generating the arena frame
     arenaFrame = tk.Frame(gameWindow)

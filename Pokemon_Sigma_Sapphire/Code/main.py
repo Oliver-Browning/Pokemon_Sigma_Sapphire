@@ -4,7 +4,7 @@ import file_IO
 import random
 import game_functions
 
-#FIX CANDIES NOT SHOWING UP -----> FIXED!
+#FIX CANDIES NOT SHOWING UP -----> FIXED!      NO IT IS NOT FIXED! FIX AGAIN IN THE MORNING
 #Make a way to select an active pokemon in the pokemon center
 #Make arena work
 #Add a return to main menu button appear at the bottom of the stone path in the main map area

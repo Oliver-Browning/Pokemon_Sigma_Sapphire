@@ -8,7 +8,7 @@
     "Oliver": {
         "name": "Oliver",
         "level": 1,
-        "candies": 0,
+        "candies": 16,
         "pokemon": [
             [
                 "57",
@@ -32,6 +32,18 @@
                 "38",
                 "Jigglypuff",
                 197,
+                1
+            ],
+            [
+                "125",
+                "Magmar",
+                231,
+                1
+            ],
+            [
+                "73",
+                "Geodude",
+                185,
                 1
             ]
         ]
