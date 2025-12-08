@@ -4,6 +4,7 @@ import game_functions
 import safari
 import button_glow
 import skyblockPuzzle
+import random
 
 def run_game(playerData):
 
@@ -92,6 +93,20 @@ def run_game(playerData):
                 choice2Button.destroy()
                 choice3Button.destroy()
 
+
+                def safari_leave():
+                    # first, hide the stuff for the next time we get here
+                    exitDialogButton.destroy()
+                    safariCanvas.itemconfig(dialogBackground, state="hidden")
+                    safariCanvas.itemconfig(dialogBox, state="hidden")
+                    opponentNameLabel.place_forget()
+                    opponentRiddleLabel.place_forget()
+
+                    # switch frames
+                    safariFrame.place_forget()
+                    mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
+
                 # set up dialog box
                 safariCanvas.itemconfig(dialogBackground, state="normal")
                 safariCanvas.itemconfig(dialogBox, state="normal")
@@ -101,24 +116,21 @@ def run_game(playerData):
                 exitDialogButton.place(x=600, y=500, height=40)
 
                 if opponent_tuple[opponent][2]: # true if correct!
-                    reward = "a pokemon"
+                    pokeList = file_IO.fetch_list("../PokeList_v3.csv", False)
+                    newPokemon = game_functions.catch_pokemon(playerData,pokeList[random.randint(1, 150)])
+                    candy_awarded = game_functions.award_candy(playerData)
+
                     opponentNameLabel.configure(text="Team Rocket blasting off again!")
-                    opponentRiddleLabel.configure(text=f"{opponent_tuple[opponent][0]} had your catch! You give team rocket the boot, and added {reward} to your team.", wraplength=700, justify="left")
+                    opponentRiddleLabel.configure(text=f"{opponent_tuple[opponent][0]} had your catch! You give team rocket the boot, gained {candy_awarded} candies, and added a pokemon to your team!"
+                                                  + f"\n#{int(newPokemon[0])} {newPokemon[1]}, {newPokemon[2]} C.P.", wraplength=700, justify="left")
                 else:
                     opponentNameLabel.configure(text="They got away...")
                     opponentRiddleLabel.configure(text=f"{opponent_tuple[opponent][0]} was not the one who stole your catch. Team rocket got away!", wraplength=700, justify="left")
+
                 opponentNameLabel.place(x=50, y=410)
                 opponentRiddleLabel.place(x=50, y=450)
 
-            def safari_leave():
-                # first, hide the stuff for the next time we get here
-                safariCanvas.itemconfig(dialogBackground, state="hidden")
-                safariCanvas.itemconfig(dialogBox, state="hidden")
-                opponentNameLabel.place_forget()
-                opponentRiddleLabel.place_forget()
-                # switch frames
-                safariFrame.place_forget()
-                mainMapFrame.place(x=0, y=0, relwidth=1, relheight=1)
+
 
 
 
